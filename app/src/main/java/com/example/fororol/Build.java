@@ -92,62 +92,62 @@ public class Build extends AppCompatActivity {
         Cursor fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' ", null);
         if (fila.moveToFirst()) {
             vigor.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            atletismo.setSelection(fila.getInt(2));
-            pelea.setSelection(fila.getInt(3));
+            atletismo.setSelection(reversoHabilidad(fila.getInt(2)));
+            pelea.setSelection(reversoHabilidad(fila.getInt(3)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_DEX+"' ", null);
         if (fila.moveToFirst()) {
-            destreza.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            esquivar.setSelection(fila.getInt(2));
-            latrocinio.setSelection(fila.getInt(3));
-            oratoria.setSelection( fila.getInt(4));
-            volar.setSelection(fila.getInt(5));
+            destreza.setSelection(fila.getInt(1));
+            esquivar.setSelection(reversoHabilidad(fila.getInt(2)));
+            latrocinio.setSelection(reversoHabilidad(fila.getInt(3)));
+            sigilo.setSelection(reversoHabilidad(fila.getInt(4)));
+            volar.setSelection(reversoHabilidad(fila.getInt(5)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_CARISMA+"' ", null);
         if (fila.moveToFirst()) {
             carisma.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            coordinacion.setSelection(fila.getInt(2));
-            intimidacion.setSelection(fila.getInt(3));
-            sigilo.setSelection( fila.getInt(4));
-            seducir.setSelection(fila.getInt(5));
-            subterfugio.setSelection(fila.getInt(6));
+            coordinacion.setSelection(reversoHabilidad(fila.getInt(2)));
+            intimidacion.setSelection(reversoHabilidad(fila.getInt(3)));
+            oratoria.setSelection(reversoHabilidad(fila.getInt(4)));
+            seducir.setSelection(reversoHabilidad(fila.getInt(5)));
+            subterfugio.setSelection(reversoHabilidad(fila.getInt(6)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PODER+"' ", null);
         if (fila.moveToFirst()) {
             poder.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            duelo.setSelection(fila.getInt(2));
-            pociones.setSelection(fila.getInt(3));
-            rituales.setSelection( fila.getInt(4));
+            duelo.setSelection(reversoHabilidad(fila.getInt(2)));
+            pociones.setSelection(reversoHabilidad(fila.getInt(3)));
+            rituales.setSelection(reversoHabilidad(fila.getInt(4)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VOLUNTAD+"' ", null);
         if (fila.moveToFirst()) {
             voluntad.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            arte.setSelection(fila.getInt(2));
-            estilo.setSelection(fila.getInt(3));
-            frialdad.setSelection( fila.getInt(4));
+            arte.setSelection(reversoHabilidad(fila.getInt(2)));
+            estilo.setSelection(reversoHabilidad(fila.getInt(3)));
+            frialdad.setSelection(reversoHabilidad(fila.getInt(4)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PERCEPCION+"' ", null);
         if (fila.moveToFirst()) {
             percepcion.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            alerta.setSelection(fila.getInt(2));
-            consciencia.setSelection(fila.getInt(3));
-            empatia.setSelection( fila.getInt(4));
-            iniciativa.setSelection(fila.getInt(5));
-            investigacion.setSelection(fila.getInt(6));
+            alerta.setSelection(reversoHabilidad(fila.getInt(2)));
+            consciencia.setSelection(reversoHabilidad(fila.getInt(3)));
+            empatia.setSelection(reversoHabilidad(fila.getInt(4)));
+            iniciativa.setSelection(reversoHabilidad(fila.getInt(5)));
+            investigacion.setSelection(reversoHabilidad(fila.getInt(6)));
         }
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_INTELIGENCIA+"' ", null);
         if (fila.moveToFirst()) {
             inteligencia.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
-            adivinacion.setSelection(fila.getInt(2));
-            arcanismo.setSelection(fila.getInt(3));
-            callejeo.setSelection( fila.getInt(4));
-            culturaM.setSelection(fila.getInt(5));
-            culturaMu.setSelection(fila.getInt(6));
-            herbologia.setSelection(fila.getInt(7));
-            magizoologia.setSelection(fila.getInt(8));
-            medicina.setSelection(fila.getInt(9));
-            politica.setSelection(fila.getInt(10));
-            supervivencia.setSelection(fila.getInt(11));
+            adivinacion.setSelection(reversoHabilidad(fila.getInt(2)));
+            arcanismo.setSelection(reversoHabilidad(fila.getInt(3)));
+            callejeo.setSelection(reversoHabilidad(fila.getInt(4)));
+            culturaM.setSelection(reversoHabilidad(fila.getInt(5)));
+            culturaMu.setSelection(reversoHabilidad(fila.getInt(6)));
+            herbologia.setSelection(reversoHabilidad(fila.getInt(7)));
+            magizoologia.setSelection(reversoHabilidad(fila.getInt(8)));
+            medicina.setSelection(reversoHabilidad(fila.getInt(9)));
+            politica.setSelection(reversoHabilidad(fila.getInt(10)));
+            supervivencia.setSelection(reversoHabilidad(fila.getInt(11)));
         }
         db.close();
 
@@ -155,7 +155,6 @@ public class Build extends AppCompatActivity {
         bactualiar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //FALTA LA COMPROBACIÓN SI INSERT O UPDATE
                 DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 Cursor cursor = db.rawQuery("SELECT * FROM "+DbHelper.TABLE_VIGOR+ " WHERE idv= "+1, null);
@@ -203,6 +202,7 @@ public class Build extends AppCompatActivity {
                     registro.put("intimidacion", metodoConversorHabilidad(intimidacion.getSelectedItem().toString()));
                     registro.put("oratoria", metodoConversorHabilidad(oratoria.getSelectedItem().toString()));
                     registro.put("seducir", metodoConversorHabilidad(seducir.getSelectedItem().toString()));
+                    registro.put("subterfugio", metodoConversorHabilidad(subterfugio.getSelectedItem().toString()));
                     db.insert(dbHelper.TABLE_CARISMA, null, registro);
                     comprobador3 = true;
                 }
@@ -270,6 +270,7 @@ public class Build extends AppCompatActivity {
     public void update(){
         DbHelper dbHelper2 = new DbHelper(getApplicationContext()); //Build.this
         SQLiteDatabase db2 = dbHelper2.getWritableDatabase();
+        //actualizar vigor
         int updateVigor = Integer.parseInt(vigor.getSelectedItem().toString());
         int updateAtle = metodoConversorHabilidad(atletismo.getSelectedItem().toString());
         int updatePelea =metodoConversorHabilidad(pelea.getSelectedItem().toString());
@@ -280,9 +281,119 @@ public class Build extends AppCompatActivity {
         registro.put("pelea", updatePelea);
 
         int cantidad = db2.update(DbHelper.TABLE_VIGOR, registro, "idv= "+1, null);
+
+        //actualizar destreza
+        int updatedex = Integer.parseInt(destreza.getSelectedItem().toString());
+        int updateesq = metodoConversorHabilidad(esquivar.getSelectedItem().toString());
+        int updatelatrocinio = metodoConversorHabilidad(latrocinio.getSelectedItem().toString());
+        int updatesigilo = metodoConversorHabilidad(sigilo.getSelectedItem().toString());
+        int updatevolar= metodoConversorHabilidad(volar.getSelectedItem().toString());
+
+        ContentValues registro2 = new ContentValues();
+        registro2.put("destreza", updatedex);
+        registro2.put("esquivar", updateesq);
+        registro2.put("latrocinio", updatelatrocinio);
+        registro2.put("sigilo", updatesigilo);
+        registro2.put("volar", updatevolar);
+
+        int cantidad2 = db2.update(DbHelper.TABLE_DEX, registro2, "idd= "+1, null);
+
+        //actualizar carisma
+        int updatecar = Integer.parseInt(carisma.getSelectedItem().toString());
+        int updatecoor= metodoConversorHabilidad(coordinacion.getSelectedItem().toString());
+        int updateint = metodoConversorHabilidad(intimidacion.getSelectedItem().toString());
+        int updateora = metodoConversorHabilidad(oratoria.getSelectedItem().toString());
+        int updateseducir = metodoConversorHabilidad(seducir.getSelectedItem().toString());
+        int updatesubt = metodoConversorHabilidad(subterfugio.getSelectedItem().toString());
+
+        ContentValues registro3 = new ContentValues();
+        registro3.put("carisma", updatecar);
+        registro3.put("coordinacion", updatecoor);
+        registro3.put("intimidacion", updateint);
+        registro3.put("oratoria", updateora);
+        registro3.put("seducir", updateseducir);
+        registro3.put("subterfugio", updatesubt);
+
+        int cantidad3 = db2.update(DbHelper.TABLE_CARISMA, registro3, "idc= "+1, null);
+
+        //actualizar poder
+        int updatepoder = Integer.parseInt(poder.getSelectedItem().toString());
+        int updateduelo= metodoConversorHabilidad(duelo.getSelectedItem().toString());
+        int updatepociones = metodoConversorHabilidad(pociones.getSelectedItem().toString());
+        int updaterituales = metodoConversorHabilidad(rituales.getSelectedItem().toString());
+
+        ContentValues registro4 = new ContentValues();
+        registro4.put("poder", updatepoder);
+        registro4.put("duelo", updateduelo);
+        registro4.put("pociones", updatepociones);
+        registro4.put("rituales", updaterituales);
+
+        int cantidad4 = db2.update(DbHelper.TABLE_PODER, registro4, "idp= "+1, null);
+
+        //actualizar voluntad
+        int updatevol = Integer.parseInt(voluntad.getSelectedItem().toString());
+        int updatearte = metodoConversorHabilidad(arte.getSelectedItem().toString());
+        int updateestilo = metodoConversorHabilidad(estilo.getSelectedItem().toString());
+        int updatefrialdad = metodoConversorHabilidad(frialdad.getSelectedItem().toString());
+
+        ContentValues registro5 = new ContentValues();
+        registro5.put("voluntad", updatevol);
+        registro5.put("arte", updatearte);
+        registro5.put("estilo", updateestilo);
+        registro5.put("frialdad", updatefrialdad);
+
+        int cantidad5 = db2.update(DbHelper.TABLE_VOLUNTAD, registro5, "idvo= "+1, null);
+
+        //actualizar percecpción
+        int updateper = Integer.parseInt(percepcion.getSelectedItem().toString());
+        int updatealerta = metodoConversorHabilidad(alerta.getSelectedItem().toString());
+        int updateConsciencia = metodoConversorHabilidad(consciencia.getSelectedItem().toString());
+        int updateEmpatia = metodoConversorHabilidad(empatia.getSelectedItem().toString());
+        int updateiniciativa = metodoConversorHabilidad(iniciativa.getSelectedItem().toString());
+        int updateInvestigacion = metodoConversorHabilidad(investigacion.getSelectedItem().toString());
+
+        ContentValues registro6 = new ContentValues();
+        registro6.put("percepcion", updateper);
+        registro6.put("alerta", updatealerta);
+        registro6.put("consciencia", updateConsciencia);
+        registro6.put("empatia", updateEmpatia);
+        registro6.put("iniciativa", updateiniciativa);
+        registro6.put("investigacion", updateInvestigacion);
+
+        int cantidad6 = db2.update(DbHelper.TABLE_PERCEPCION, registro6, "idpe= "+1, null);
+
+        //actualizar inteligencia
+        int updateinte = Integer.parseInt(inteligencia.getSelectedItem().toString());
+        int updateAdivina = metodoConversorHabilidad(adivinacion.getSelectedItem().toString());
+        int updatearcanismo = metodoConversorHabilidad(arcanismo.getSelectedItem().toString());
+        int updateCallejeo = metodoConversorHabilidad(callejeo.getSelectedItem().toString());
+        int updateculturaMagia = metodoConversorHabilidad(culturaM.getSelectedItem().toString());
+        int updateculturaMuggle = metodoConversorHabilidad(culturaMu.getSelectedItem().toString());
+        int updateHerbologia = metodoConversorHabilidad(herbologia.getSelectedItem().toString());
+        int updateMagZoo = metodoConversorHabilidad(magizoologia.getSelectedItem().toString());
+        int updateMedicina = metodoConversorHabilidad(medicina.getSelectedItem().toString());
+        int updatePolitica = metodoConversorHabilidad(politica.getSelectedItem().toString());
+        int updateSupervivencia = metodoConversorHabilidad(supervivencia.getSelectedItem().toString());
+
+        ContentValues registro7 = new ContentValues();
+        registro7.put("inteligencia", updateinte);
+        registro7.put("adivinacion", updateAdivina);
+        registro7.put("arcanismo", updatearcanismo);
+        registro7.put("callejeo", updateCallejeo);
+        registro7.put("culturaMagia", updateculturaMagia);
+        registro7.put("culturaMuggle", updateculturaMuggle);
+        registro7.put("herbologia", updateHerbologia);
+        registro7.put("magizoologia", updateMagZoo);
+        registro7.put("medicina", updateMedicina);
+        registro7.put("politica", updatePolitica);
+        registro7.put("supervivencia", updateSupervivencia);
+
+        int cantidad7 = db2.update(DbHelper.TABLE_INTELIGENCIA, registro7, "idi= "+1, null);
+
+
         db2.close();
 
-        if (cantidad == 1){
+        if ( cantidad==1 && cantidad2 == 1 && cantidad3 == 1 && cantidad4 == 1 && cantidad5 == 1 && cantidad6 == 1 && cantidad7 == 1) {
             Toast.makeText(this, "Ficha actualizada correctamente", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Error: ficha no actualizada", Toast.LENGTH_LONG).show();
@@ -300,6 +411,22 @@ public class Build extends AppCompatActivity {
             return 4;
         } else if (datoSpinner.equals("Maestro (+7)")){
             return 7;
+        } else{
+            return -1;
+        }
+    }
+
+    public int reversoHabilidad (int datoTabla) {
+        if (datoTabla == 0) {
+            return 0;
+        }else if (datoTabla == 1) {
+            return 1;
+        } else if (datoTabla == 2){
+            return 2;
+        } else if (datoTabla == 4){
+            return 3;
+        } else if (datoTabla == 7){
+            return 4;
         } else{
             return -1;
         }
