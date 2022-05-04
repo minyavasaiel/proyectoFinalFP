@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="4"
+    android:rowCount="32"
+    android:layout_margin="15dp"
+    android:padding="10dp"
+    tools:context=".Build">
+
+
+    <TextView
+        android:text="Build PJ"
+        android:layout_columnSpan="4"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:text="Vigor"
+        android:layout_rowSpan="2"/>
+
+    <Spinner
+        android:id="@+id/vigor"
+        android:layout_rowSpan="2"
+        android:entries="@array/destrezas"/>
+
+    <TextView
+        android:text="Atletismo"/>
+    <Spinner
+        android:id="@+id/atletismo"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:text="Pelea"/>
+    <Spinner
+        android:id="@+id/pelea"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:text="Destreza"
+        android:layout_rowSpan="4"/>
+
+    <Spinner
+        android:id="@+id/destreza"
+        android:layout_rowSpan="4"
+        android:entries="@array/destrezas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esquivar" />
+
+    <Spinner
+        android:id="@+id/esquivar"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latrocinio" />
+
+    <Spinner
+        android:id="@+id/latrocinio"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sigilo" />
+
+    <Spinner
+        android:id="@+id/sigilo"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volar" />
+
+    <Spinner
+        android:id="@+id/volar"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="5"
+        android:text="Carisma" />
+
+    <Spinner
+        android:id="@+id/carisma"
+        android:layout_rowSpan="5"
+        android:entries="@array/destrezas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordinación" />
+
+    <Spinner
+        android:id="@+id/coordinacion"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intimidación" />
+
+    <Spinner
+        android:id="@+id/intimidacion"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oratoria" />
+
+    <Spinner
+        android:id="@+id/oratoria"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seducir" />
+
+    <Spinner
+        android:id="@+id/seducir"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subterfugio" />
+
+    <Spinner
+        android:id="@+id/subterfugio"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="3"
+        android:text="Poder" />
+
+    <Spinner
+        android:id="@+id/poder"
+        android:layout_rowSpan="3"
+        android:entries="@array/destrezas"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duelo" />
+
+    <Spinner
+        android:id="@+id/duelo"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociones" />
+
+    <Spinner
+        android:id="@+id/pociones"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rituales" />
+
+    <Spinner
+        android:id="@+id/rituales"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voluntad"
+        android:layout_rowSpan="3"/>
+
+    <Spinner
+        android:id="@+id/voluntad"
+        android:layout_rowSpan="3"
+        android:entries="@array/destrezas" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arte/Artesanía" />
+
+    <Spinner
+        android:id="@+id/arte"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estilo" />
+
+    <Spinner
+        android:id="@+id/estilo"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frialdad" />
+
+    <Spinner
+        android:id="@+id/frialdad"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="5"
+        android:text="Percepción" />
+
+    <Spinner
+        android:id="@+id/percepcion"
+        android:layout_rowSpan="5"
+        android:entries="@array/destrezas" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alerta" />
+
+    <Spinner
+        android:id="@+id/alerta"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consciencia" />
+
+    <Spinner
+        android:id="@+id/consciencia"
+        android:entries="@array/habilidades" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empatía" />
+
+    <Spinner
+        android:id="@+id/empatia"
+        android:entries="@array/habilidades"></Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciativa" />
+
+    <Spinner
+        android:id="@+id/iniciativa"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Investigación" />
+
+    <Spinner
+        android:id="@+id/investigacion"
+        android:entries="@array/habilidades"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inteligencia"
+        android:layout_rowSpan="10"/>
+    <Spinner
+        android:layout_rowSpan="10"
+        android:id="@+id/inteligencia"
+        android:entries="@array/destrezas"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adivinación" />
+
+    <Spinner
+        android:id="@+id/adivinacion"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arcanismo" />
+
+    <Spinner
+        android:id="@+id/arcanismo"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Callejeo" />
+
+    <Spinner
+        android:id="@+id/callejeo"
+        android:entries="@array/habilidades"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cultura Mágica" />
+
+    <Spinner
+        android:id="@+id/culturaMag"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cultura Muggle" />
+
+    <Spinner
+        android:id="@+id/culturaMug"
+        android:entries="@array/habilidades"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Herbología" />
+
+    <Spinner
+        android:id="@+id/herbologia"
+        android:entries="@array/habilidades"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Magizoología" />
+
+    <Spinner
+        android:id="@+id/magizoologia"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicina" />
+
+    <Spinner
+        android:id="@+id/medicina"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Política" />
+
+    <Spinner
+        android:id="@+id/politica"
+        android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supervivencia" />
+
+    <Spinner
+        android:id="@+id/supervivencia"
+        android:entries="@array/habilidades"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:id="@+id/bactualizar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_columnSpan="4"/>
+
+</GridLayout>
+
+</ScrollView>
+

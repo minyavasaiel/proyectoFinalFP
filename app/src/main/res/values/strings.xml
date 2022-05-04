@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ForoRol</string>
+    <array name="destrezas">
+        <item>"0"</item>
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"3"</item>
+        <item>"4"</item>
+        <item>"5"</item>
+        <item>"6"</item>
+        <item>"7"</item>
+    </array>
+    <array name="habilidades">
+        <item>Desentrenado (+0)</item>
+        <item>Novato (+1)</item>
+        <item>Competente (+2)</item>
+        <item>Experto (+4)</item>
+        <item>Maestro (+7)</item>
+    </array>
+
+</resources>

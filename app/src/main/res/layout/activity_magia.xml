@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="4"
+    android:rowCount="32"
+    android:layout_margin="20dp"
+    android:padding="10dp"
+    tools:context=".Build">
+
+
+    <TextView
+        android:text="Build PJ"
+        android:layout_columnSpan="4"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:text="Vigor"
+        android:layout_rowSpan="2"/>
+    <EditText
+        android:id="@+id/vigor"
+        android:layout_rowSpan="2"/>
+
+    <TextView
+        android:text="Atletismo"/>
+    <EditText
+        android:id="@+id/atletismo"/>
+
+    <TextView
+        android:text="Pelea"/>
+    <EditText
+        android:id="@+id/pelea"/>
+
+    <TextView
+        android:text="Destreza"
+        android:layout_rowSpan="4"/>
+
+    <EditText
+        android:id="@+id/destreza"
+        android:layout_rowSpan="4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esquivar" />
+
+    <EditText
+        android:id="@+id/esquivar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latrocinio" />
+
+    <EditText
+        android:id="@+id/latrocinio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sigilo" />
+
+    <EditText
+        android:id="@+id/sigilo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volar" />
+
+    <EditText
+        android:id="@+id/volar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="5"
+        android:text="Carisma" />
+
+    <EditText
+        android:id="@+id/carisma"
+        android:layout_rowSpan="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordinación" />
+
+    <EditText
+        android:id="@+id/coordinacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intimidación" />
+
+    <EditText
+        android:id="@+id/intimidacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oratoria" />
+
+    <EditText
+        android:id="@+id/oratoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seducir" />
+
+    <EditText
+        android:id="@+id/seducir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subterfugio" />
+
+    <EditText
+        android:id="@+id/subterfugio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="3"
+        android:text="Poder" />
+
+    <EditText
+        android:id="@+id/poder"
+        android:layout_rowSpan="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duelo" />
+
+    <EditText
+        android:id="@+id/duelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pociones" />
+
+    <EditText
+        android:id="@+id/pociones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rituales" />
+
+    <EditText
+        android:id="@+id/rituales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voluntad"
+        android:layout_rowSpan="3"/>
+
+    <EditText
+        android:id="@+id/voluntad"
+        android:layout_rowSpan="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arte/Artesanía" />
+
+    <EditText
+        android:id="@+id/arte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estilo" />
+
+    <EditText
+        android:id="@+id/estilo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frialdad" />
+
+    <EditText
+        android:id="@+id/frialdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="5"
+        android:text="Percepción" />
+
+    <EditText
+        android:id="@+id/percepcion"
+        android:layout_rowSpan="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alerta" />
+
+    <EditText
+        android:id="@+id/alerta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consciencia" />
+
+    <EditText
+        android:id="@+id/consciencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empatía" />
+
+    <EditText
+        android:id="@+id/empatia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciativa" />
+
+    <EditText
+        android:id="@+id/iniciativa" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Investigación" />
+
+    <EditText
+        android:id="@+id/investigacion" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inteligencia"
+        android:layout_rowSpan="10"/>
+    <EditText
+        android:layout_rowSpan="10"
+        android:id="@+id/inteligencia"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adivinación" />
+
+    <EditText
+        android:id="@+id/adivinacion" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arcanismo" />
+
+    <EditText
+        android:id="@+id/arcanismo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Callejeo" />
+
+    <EditText
+        android:id="@+id/callejeo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cultura Mágica" />
+
+    <EditText
+        android:id="@+id/culturaMag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cultura Muggle" />
+
+    <EditText
+        android:id="@+id/culturaMug" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Herbología" />
+
+    <EditText
+        android:id="@+id/herbologia" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Magizoología" />
+
+    <EditText
+        android:id="@+id/magizoologia" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicina" />
+
+    <EditText
+        android:id="@+id/medicina" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Política" />
+
+    <EditText
+        android:id="@+id/politica" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supervivencia" />
+
+    <EditText
+        android:id="@+id/supervivencia" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:id="@+id/bactualizar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_columnSpan="4"/>
+
+</GridLayout>
+
+</ScrollView>
+
