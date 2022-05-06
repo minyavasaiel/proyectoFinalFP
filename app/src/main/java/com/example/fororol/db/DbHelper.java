@@ -16,6 +16,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_VOLUNTAD = "tVoluntad";
     public static final String TABLE_PERCEPCION = "tPercepcion";
     public static final String TABLE_INTELIGENCIA = "tInteligencia";
+    public static final String TABLE_PJ = "tPJ";
 
 
     public DbHelper(@Nullable Context context) {
@@ -31,6 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_VOLUNTAD+"(idvo INTEGER PRIMARY KEY AUTOINCREMENT, voluntad INTEGER, arte INTEGER, estilo INTEGER, frialdad INTEGER)");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_PERCEPCION+"(idpe INTEGER PRIMARY KEY AUTOINCREMENT, percepcion INTEGER, alerta INTEGER, consciencia INTEGER, empatia INTEGER, iniciativa INTEGER, investigacion INTEGER)");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_INTELIGENCIA+"(idi INTEGER PRIMARY KEY AUTOINCREMENT, inteligencia INTEGER, adivinacion INTEGER, arcanismo INTEGER, callejeo INTEGER, culturaMagia INTEGER, culturaMuggle INTEGER, herbologia INTEGER, magizoologia INTEGER, medicina INTEGER, politica INTEGER, supervivencia INTEGER)");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_PJ+"(idpj INTEGER PRIMARY KEY AUTOINCREMENT, nombre String)");
     }
 
     @Override
@@ -42,6 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE "+ TABLE_VOLUNTAD);
         sqLiteDatabase.execSQL("DROP TABLE "+ TABLE_PERCEPCION);
         sqLiteDatabase.execSQL("DROP TABLE "+ TABLE_INTELIGENCIA);
+        sqLiteDatabase.execSQL("DROP TABLE "+ TABLE_PJ);
         onCreate(sqLiteDatabase);
     }
 }

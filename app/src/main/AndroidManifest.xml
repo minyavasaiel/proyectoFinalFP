@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForoRol">
         <activity
+            android:name=".NuevoPj"
+            android:exported="false" />
+        <activity
+            android:name=".Escoger"
+            android:exported="false" />
+        <activity
             android:name=".Build"
             android:exported="false" />
         <activity

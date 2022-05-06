@@ -23,6 +23,7 @@ public class Build extends AppCompatActivity {
     private Spinner atletismo, pelea, esquivar, latrocinio, sigilo, volar, coordinacion, intimidacion, oratoria, seducir, subterfugio, duelo, pociones, rituales, arte, estilo, frialdad, alerta, consciencia, empatia, iniciativa, investigacion, adivinacion, arcanismo, callejeo, culturaM, culturaMu, herbologia, magizoologia, medicina, politica, supervivencia;
     private Button bactualiar;
     private ArrayList arrayVigor = new ArrayList<Vigor>();
+    public static int idEscogido =0;
 
     @Override
     public boolean onSupportNavigateUp(){
@@ -89,13 +90,13 @@ public class Build extends AppCompatActivity {
        //poner los datos de la base de datos
         DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' ", null);
+        Cursor fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' WHERE idv= '"+idEscogido+"' ", null);
         if (fila.moveToFirst()) {
             vigor.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
             atletismo.setSelection(reversoHabilidad(fila.getInt(2)));
             pelea.setSelection(reversoHabilidad(fila.getInt(3)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_DEX+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_DEX+"' WHERE idd= '" +idEscogido+ "' ", null);
         if (fila.moveToFirst()) {
             destreza.setSelection(fila.getInt(1));
             esquivar.setSelection(reversoHabilidad(fila.getInt(2)));
@@ -103,7 +104,7 @@ public class Build extends AppCompatActivity {
             sigilo.setSelection(reversoHabilidad(fila.getInt(4)));
             volar.setSelection(reversoHabilidad(fila.getInt(5)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_CARISMA+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_CARISMA+"' WHERE idc= '" +idEscogido+ "' ", null);
         if (fila.moveToFirst()) {
             carisma.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
             coordinacion.setSelection(reversoHabilidad(fila.getInt(2)));
@@ -112,21 +113,21 @@ public class Build extends AppCompatActivity {
             seducir.setSelection(reversoHabilidad(fila.getInt(5)));
             subterfugio.setSelection(reversoHabilidad(fila.getInt(6)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PODER+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PODER+"' WHERE idp= '" + idEscogido+"' ", null);
         if (fila.moveToFirst()) {
             poder.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
             duelo.setSelection(reversoHabilidad(fila.getInt(2)));
             pociones.setSelection(reversoHabilidad(fila.getInt(3)));
             rituales.setSelection(reversoHabilidad(fila.getInt(4)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VOLUNTAD+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VOLUNTAD+"' WHERE idvo= ' "+idEscogido+" '", null);
         if (fila.moveToFirst()) {
             voluntad.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
             arte.setSelection(reversoHabilidad(fila.getInt(2)));
             estilo.setSelection(reversoHabilidad(fila.getInt(3)));
             frialdad.setSelection(reversoHabilidad(fila.getInt(4)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PERCEPCION+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PERCEPCION+"' WHERE idpe= ' "+idEscogido+" '", null);
         if (fila.moveToFirst()) {
             percepcion.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
             alerta.setSelection(reversoHabilidad(fila.getInt(2)));
@@ -135,9 +136,9 @@ public class Build extends AppCompatActivity {
             iniciativa.setSelection(reversoHabilidad(fila.getInt(5)));
             investigacion.setSelection(reversoHabilidad(fila.getInt(6)));
         }
-        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_INTELIGENCIA+"' ", null);
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_INTELIGENCIA+"' WHERE idi= '"+ idEscogido+" '", null);
         if (fila.moveToFirst()) {
-            inteligencia.setSelection(fila.getInt(1)); //la posición coincide con el dato de tabla
+            inteligencia.setSelection(fila.getInt(1));
             adivinacion.setSelection(reversoHabilidad(fila.getInt(2)));
             arcanismo.setSelection(reversoHabilidad(fila.getInt(3)));
             callejeo.setSelection(reversoHabilidad(fila.getInt(4)));
@@ -157,7 +158,7 @@ public class Build extends AppCompatActivity {
             public void onClick(View view) {
                 DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                Cursor cursor = db.rawQuery("SELECT * FROM "+DbHelper.TABLE_VIGOR+ " WHERE idv= "+1, null);
+                Cursor cursor = db.rawQuery("SELECT * FROM "+DbHelper.TABLE_VIGOR+ " WHERE idv= "+idEscogido, null);
                 if (cursor.moveToNext()) {
                     update();
                 } else {
@@ -174,7 +175,7 @@ public class Build extends AppCompatActivity {
                 String query= "SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' ";
                 if (db.rawQuery(query, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idv", 1);
+                    registro.put("idv", idEscogido);
                     registro.put("vigor", Integer.parseInt(vigor.getSelectedItem().toString()));
                     registro.put("atletismo",metodoConversorHabilidad(atletismo.getSelectedItem().toString()) );
                     registro.put("pelea", metodoConversorHabilidad(pelea.getSelectedItem().toString()));
@@ -184,7 +185,7 @@ public class Build extends AppCompatActivity {
                String query2= "SELECT * FROM '"+DbHelper.TABLE_DEX+"' ";
                 if (db.rawQuery(query2, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idd", 1);
+                    registro.put("idd", idEscogido);
                     registro.put("destreza", Integer.parseInt(destreza.getSelectedItem().toString()));
                     registro.put("esquivar", metodoConversorHabilidad(esquivar.getSelectedItem().toString()));
                     registro.put("sigilo", metodoConversorHabilidad(sigilo.getSelectedItem().toString()));
@@ -196,7 +197,7 @@ public class Build extends AppCompatActivity {
                 String query3= "SELECT * FROM '"+DbHelper.TABLE_CARISMA+"' ";
                 if (db.rawQuery(query3, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idc", 1);
+                    registro.put("idc", idEscogido);
                     registro.put("carisma", Integer.parseInt(carisma.getSelectedItem().toString()));
                     registro.put("coordinacion", metodoConversorHabilidad(coordinacion.getSelectedItem().toString()));
                     registro.put("intimidacion", metodoConversorHabilidad(intimidacion.getSelectedItem().toString()));
@@ -209,7 +210,7 @@ public class Build extends AppCompatActivity {
                 String query4= "SELECT * FROM '"+DbHelper.TABLE_PODER+"' ";
                 if (db.rawQuery(query4, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idp", 1);
+                    registro.put("idp", idEscogido);
                     registro.put("poder", Integer.parseInt(poder.getSelectedItem().toString()));
                     registro.put("duelo", metodoConversorHabilidad(duelo.getSelectedItem().toString()));
                     registro.put("pociones", metodoConversorHabilidad(pociones.getSelectedItem().toString()));
@@ -220,7 +221,7 @@ public class Build extends AppCompatActivity {
                 String query5= "SELECT * FROM '"+DbHelper.TABLE_VOLUNTAD+"' ";
                 if (db.rawQuery(query5, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idvo", 1);
+                    registro.put("idvo", idEscogido);
                     registro.put("voluntad", Integer.parseInt(voluntad.getSelectedItem().toString()));
                     registro.put("arte", metodoConversorHabilidad(arte.getSelectedItem().toString()));
                     registro.put("estilo", metodoConversorHabilidad(estilo.getSelectedItem().toString()));
@@ -231,7 +232,7 @@ public class Build extends AppCompatActivity {
                 String query6= "SELECT * FROM '"+DbHelper.TABLE_PERCEPCION+"' ";
                 if (db.rawQuery(query6, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idpe", 1);
+                    registro.put("idpe", idEscogido);
                     registro.put("percepcion", Integer.parseInt(percepcion.getSelectedItem().toString()));
                     registro.put("alerta", metodoConversorHabilidad(alerta.getSelectedItem().toString()));
                     registro.put("consciencia", metodoConversorHabilidad(consciencia.getSelectedItem().toString()));
@@ -244,7 +245,7 @@ public class Build extends AppCompatActivity {
                 String query7= "SELECT * FROM '"+DbHelper.TABLE_INTELIGENCIA+"' ";
                 if (db.rawQuery(query7, null) !=null){
                     ContentValues registro = new ContentValues();
-                    registro.put("idi", 1);
+                    registro.put("idi", idEscogido);
                     registro.put("inteligencia", Integer.parseInt(percepcion.getSelectedItem().toString()));
                     registro.put("adivinacion", metodoConversorHabilidad(alerta.getSelectedItem().toString()));
                     registro.put("arcanismo", metodoConversorHabilidad(consciencia.getSelectedItem().toString()));
@@ -280,7 +281,7 @@ public class Build extends AppCompatActivity {
         registro.put("atletismo", updateAtle);
         registro.put("pelea", updatePelea);
 
-        int cantidad = db2.update(DbHelper.TABLE_VIGOR, registro, "idv= "+1, null);
+        int cantidad = db2.update(DbHelper.TABLE_VIGOR, registro, "idv= "+idEscogido, null);
 
         //actualizar destreza
         int updatedex = Integer.parseInt(destreza.getSelectedItem().toString());
@@ -296,7 +297,7 @@ public class Build extends AppCompatActivity {
         registro2.put("sigilo", updatesigilo);
         registro2.put("volar", updatevolar);
 
-        int cantidad2 = db2.update(DbHelper.TABLE_DEX, registro2, "idd= "+1, null);
+        int cantidad2 = db2.update(DbHelper.TABLE_DEX, registro2, "idd= "+idEscogido, null);
 
         //actualizar carisma
         int updatecar = Integer.parseInt(carisma.getSelectedItem().toString());
@@ -314,7 +315,7 @@ public class Build extends AppCompatActivity {
         registro3.put("seducir", updateseducir);
         registro3.put("subterfugio", updatesubt);
 
-        int cantidad3 = db2.update(DbHelper.TABLE_CARISMA, registro3, "idc= "+1, null);
+        int cantidad3 = db2.update(DbHelper.TABLE_CARISMA, registro3, "idc= "+idEscogido, null);
 
         //actualizar poder
         int updatepoder = Integer.parseInt(poder.getSelectedItem().toString());
@@ -328,7 +329,7 @@ public class Build extends AppCompatActivity {
         registro4.put("pociones", updatepociones);
         registro4.put("rituales", updaterituales);
 
-        int cantidad4 = db2.update(DbHelper.TABLE_PODER, registro4, "idp= "+1, null);
+        int cantidad4 = db2.update(DbHelper.TABLE_PODER, registro4, "idp= "+idEscogido, null);
 
         //actualizar voluntad
         int updatevol = Integer.parseInt(voluntad.getSelectedItem().toString());
@@ -342,7 +343,7 @@ public class Build extends AppCompatActivity {
         registro5.put("estilo", updateestilo);
         registro5.put("frialdad", updatefrialdad);
 
-        int cantidad5 = db2.update(DbHelper.TABLE_VOLUNTAD, registro5, "idvo= "+1, null);
+        int cantidad5 = db2.update(DbHelper.TABLE_VOLUNTAD, registro5, "idvo= "+idEscogido, null);
 
         //actualizar percecpción
         int updateper = Integer.parseInt(percepcion.getSelectedItem().toString());
@@ -360,7 +361,7 @@ public class Build extends AppCompatActivity {
         registro6.put("iniciativa", updateiniciativa);
         registro6.put("investigacion", updateInvestigacion);
 
-        int cantidad6 = db2.update(DbHelper.TABLE_PERCEPCION, registro6, "idpe= "+1, null);
+        int cantidad6 = db2.update(DbHelper.TABLE_PERCEPCION, registro6, "idpe= "+idEscogido, null);
 
         //actualizar inteligencia
         int updateinte = Integer.parseInt(inteligencia.getSelectedItem().toString());
@@ -388,7 +389,7 @@ public class Build extends AppCompatActivity {
         registro7.put("politica", updatePolitica);
         registro7.put("supervivencia", updateSupervivencia);
 
-        int cantidad7 = db2.update(DbHelper.TABLE_INTELIGENCIA, registro7, "idi= "+1, null);
+        int cantidad7 = db2.update(DbHelper.TABLE_INTELIGENCIA, registro7, "idi= "+idEscogido, null);
 
 
         db2.close();
