@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForoRol">
         <activity
+            android:name=".Dados"
+            android:exported="false" />
+        <activity
             android:name=".NuevoPj"
             android:exported="false" />
         <activity
@@ -22,9 +25,6 @@
             android:exported="false" />
         <activity
             android:name=".Calculadora"
-            android:exported="false" />
-        <activity
-            android:name=".Datos"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

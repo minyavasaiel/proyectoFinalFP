@@ -17,8 +17,11 @@
 
 
     <TextView
-        android:text="Build PJ"
+        android:id="@+id/titulo"
         android:layout_columnSpan="4"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="cursive"
+        android:textSize="30dp"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -379,8 +382,8 @@
         android:layout_height="wrap_content"
         android:text="Actualizar"
         android:id="@+id/bactualizar"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:layout_columnSpan="4"/>
 
 </GridLayout>

@@ -31,6 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private String url = "https://hp-avada-kedavra.foroactivo.com/";
     public static ArrayList<Pj> pjs = new ArrayList<>();
+    public static String nombrePj;
     Button btn, btnescoger;
     TextView tvpjEscogido;
 
@@ -46,20 +47,25 @@ public class MainActivity extends AppCompatActivity {
 
         DbHelper dbhelper = new DbHelper(MainActivity.this);
         SQLiteDatabase db = dbhelper.getWritableDatabase();
-        if (db !=null){
+        if (db != null) {
             Toast.makeText(this, "Base de datos cargada", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this,"Error al cargar la base de datos", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error al cargar la base de datos", Toast.LENGTH_LONG).show();
         }
         //Cargar Array de pjs
         cargarPjs();
         comprobarBoton();
 
         //poner pj escogido
-        if (Build.idEscogido != 0){
-            tvpjEscogido.setText("El pj escogido es: " + Build.idEscogido);
-        } else{
-            tvpjEscogido.setText("No hay pj escogido");
+        for (int i = 0; i < pjs.size(); i++) {
+            if (pjs.get(i).getIdPj() == Build.idEscogido) {
+                nombrePj = pjs.get(i).getNombre();
+            }
+        }
+        if (Build.idEscogido != 0) {
+            tvpjEscogido.setText("Estás trabajando con " + nombrePj);
+        } else {
+            tvpjEscogido.setText("No hay pj escogido.");
         }
 
         btnescoger.setOnClickListener(new View.OnClickListener() {
@@ -81,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void comprobarBoton() {
-        if (pjs.isEmpty()){
+        if (pjs.isEmpty()) {
             btnescoger.setEnabled(false);
         }
-        if (pjs.size()==7){
+        if (pjs.size() == 9) {
             btn.setEnabled(false);
         }
     }
@@ -94,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
         pjs.clear();
         DbHelper dbhelper = new DbHelper(MainActivity.this);
         SQLiteDatabase dblectura = dbhelper.getReadableDatabase();
-        Cursor cursor = dblectura.rawQuery("SELECT * FROM  "+DbHelper.TABLE_PJ +"", null);
+        Cursor cursor = dblectura.rawQuery("SELECT * FROM  " + DbHelper.TABLE_PJ + "", null);
         if (cursor.moveToFirst()) {
             do {
-                int idpj= (cursor.getInt(0));
+                int idpj = (cursor.getInt(0));
                 String nombre = (cursor.getString(1));
                 Pj pj = new Pj(idpj, nombre);
                 pjs.add(pj);
@@ -110,33 +116,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id =item.getItemId();
-        if(id ==R.id.foro){
-            Uri uri= Uri.parse(url);
+        int id = item.getItemId();
+        if (id == R.id.foro) {
+            Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
-        } else if (id == R.id.magiaid){
+        } else if (id == R.id.magiaid) {
             if (Build.idEscogido != 0) {
                 Intent i = new Intent(MainActivity.this, Build.class);
                 startActivity(i);
             } else {
                 Toast.makeText(this, "No hay pj escogido", Toast.LENGTH_LONG).show();
             }
-        } else if (id == R.id.calculadoraid){
+        } else if (id == R.id.calculadoraid) {
             if (Build.idEscogido != 0) {
-            Intent i = new Intent(MainActivity.this, Calculadora.class);
-            startActivity(i);
+                Intent i = new Intent(MainActivity.this, Calculadora.class);
+                startActivity(i);
             } else {
                 Toast.makeText(this, "No hay pj escogido", Toast.LENGTH_LONG).show();
             }
-        }  else if (id ==R.id.salir) {
-            finish();
+        } else if (id == R.id.dados) {
+            if (Build.idEscogido != 0) {
+                Intent i = new Intent(MainActivity.this, Dados.class);
+                startActivity(i);
+            } else {
+                Toast.makeText(this, "No hay pj escogido", Toast.LENGTH_LONG).show();
+            }
+        } else if (id == R.id.salir) {
+            finishAffinity ();
         }
         return super.onOptionsItemSelected(item);
     }

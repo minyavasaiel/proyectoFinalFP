@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fororol.db.DbHelper;
@@ -22,6 +23,7 @@ public class Build extends AppCompatActivity {
     private Spinner vigor, poder, destreza, carisma, voluntad, percepcion, inteligencia;
     private Spinner atletismo, pelea, esquivar, latrocinio, sigilo, volar, coordinacion, intimidacion, oratoria, seducir, subterfugio, duelo, pociones, rituales, arte, estilo, frialdad, alerta, consciencia, empatia, iniciativa, investigacion, adivinacion, arcanismo, callejeo, culturaM, culturaMu, herbologia, magizoologia, medicina, politica, supervivencia;
     private Button bactualiar;
+    private TextView titulo;
     private ArrayList arrayVigor = new ArrayList<Vigor>();
     public static int idEscogido =0;
 
@@ -86,8 +88,11 @@ public class Build extends AppCompatActivity {
        supervivencia = findViewById(R.id.supervivencia);
 
        bactualiar = findViewById(R.id.bactualizar);
+       titulo = findViewById(R.id.titulo);
 
-       //poner los datos de la base de datos
+       titulo.setText("Ficha de "+MainActivity.nombrePj);
+
+       //poner los datos de la base de datos y arrays Modelo
         DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' WHERE idv= '"+idEscogido+"' ", null);
@@ -246,22 +251,22 @@ public class Build extends AppCompatActivity {
                 if (db.rawQuery(query7, null) !=null){
                     ContentValues registro = new ContentValues();
                     registro.put("idi", idEscogido);
-                    registro.put("inteligencia", Integer.parseInt(percepcion.getSelectedItem().toString()));
-                    registro.put("adivinacion", metodoConversorHabilidad(alerta.getSelectedItem().toString()));
-                    registro.put("arcanismo", metodoConversorHabilidad(consciencia.getSelectedItem().toString()));
-                    registro.put("callejeo", metodoConversorHabilidad(empatia.getSelectedItem().toString()));
-                    registro.put("culturaMagia", metodoConversorHabilidad(iniciativa.getSelectedItem().toString()));
-                    registro.put("culturaMuggle", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
-                    registro.put("herbologia", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
-                    registro.put("magizoologia", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
-                    registro.put("medicina", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
-                    registro.put("politica", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
-                    registro.put("supervivencia", metodoConversorHabilidad(investigacion.getSelectedItem().toString()));
+                    registro.put("inteligencia", Integer.parseInt(inteligencia.getSelectedItem().toString()));
+                    registro.put("adivinacion", metodoConversorHabilidad(adivinacion.getSelectedItem().toString()));
+                    registro.put("arcanismo", metodoConversorHabilidad(arcanismo.getSelectedItem().toString()));
+                    registro.put("callejeo", metodoConversorHabilidad(callejeo.getSelectedItem().toString()));
+                    registro.put("culturaMagia", metodoConversorHabilidad(culturaM.getSelectedItem().toString()));
+                    registro.put("culturaMuggle", metodoConversorHabilidad(culturaMu.getSelectedItem().toString()));
+                    registro.put("herbologia", metodoConversorHabilidad(herbologia.getSelectedItem().toString()));
+                    registro.put("magizoologia", metodoConversorHabilidad(magizoologia.getSelectedItem().toString()));
+                    registro.put("medicina", metodoConversorHabilidad(medicina.getSelectedItem().toString()));
+                    registro.put("politica", metodoConversorHabilidad(politica.getSelectedItem().toString()));
+                    registro.put("supervivencia", metodoConversorHabilidad(supervivencia.getSelectedItem().toString()));
                     db.insert(dbHelper.TABLE_INTELIGENCIA, null, registro);
                     comprobador7 = true;
                 }
                 if (comprobador1 && comprobador2 && comprobador3 && comprobador4 && comprobador5 && comprobador6 && comprobador7) {
-                    Toast.makeText(getApplicationContext(), "Datos actualizados correctamente.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Datos insertados correctamente.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Datos insertados correctamente.", Toast.LENGTH_LONG).show();
                 }

@@ -9,6 +9,9 @@
         android:id="@+id/calculadoraid"
         android:title="Calculadora" />
     <item
+        android:id="@+id/dados"
+        android:title="Dados" />
+    <item
         android:id="@+id/foro"
         android:title="Foro" />
     <item

@@ -42,4 +42,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/bpj7"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bpj8"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bpj9"/>
+
 </LinearLayout>

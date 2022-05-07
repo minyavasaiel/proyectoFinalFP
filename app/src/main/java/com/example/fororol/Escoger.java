@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Escoger extends AppCompatActivity {
-    Button bpj1, bpj2, bpj3, bpj4, bpj5, bpj6, bpj7;
+    Button bpj1, bpj2, bpj3, bpj4, bpj5, bpj6, bpj7, bpj8, bpj9;
 
     @Override
     public boolean onSupportNavigateUp(){
@@ -30,6 +30,8 @@ public class Escoger extends AppCompatActivity {
         bpj5 = findViewById(R.id.bpj5);
         bpj6 = findViewById(R.id.bpj6);
         bpj7 = findViewById(R.id.bpj7);
+        bpj8 = findViewById(R.id.bpj8);
+        bpj9 = findViewById(R.id.bpj9);
 
         bpj1.setEnabled(false);
         bpj2.setEnabled(false);
@@ -38,6 +40,8 @@ public class Escoger extends AppCompatActivity {
         bpj5.setEnabled(false);
         bpj6.setEnabled(false);
         bpj7.setEnabled(false);
+        bpj8.setEnabled(false);
+        bpj9.setEnabled(false);
 
         for (int i = 0; i < MainActivity.pjs.size(); i++) {
             if (i == 0) {
@@ -61,6 +65,12 @@ public class Escoger extends AppCompatActivity {
             } else if (i == 6) {
                 bpj7.setEnabled(true);
                 bpj7.setText(MainActivity.pjs.get(i).getNombre());
+            } else if (i == 7) {
+                bpj8.setEnabled(true);
+                bpj8.setText(MainActivity.pjs.get(i).getNombre());
+            } else if (i == 8) {
+                bpj9.setEnabled(true);
+                bpj9.setText(MainActivity.pjs.get(i).getNombre());
             }
 
         }
@@ -127,6 +137,24 @@ public class Escoger extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        bpj8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Build.idEscogido=8;
+                Intent intent = new Intent(Escoger.this, MainActivity.class);
+                startActivity(intent);
+            }
+        }    );
+
+        bpj9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Build.idEscogido=9;
+                Intent intent = new Intent(Escoger.this, MainActivity.class);
+                startActivity(intent);
+            }
+        }   );
 
     }
 }
