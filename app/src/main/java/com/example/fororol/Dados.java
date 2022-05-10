@@ -2,9 +2,13 @@ package com.example.fororol;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fororol.db.DbHelper;
@@ -27,6 +31,8 @@ public class Dados extends AppCompatActivity {
     public static ArrayList<Percepcion> arrayPercepcion = new ArrayList<>();
     public static ArrayList<Poder> arrayPoder = new ArrayList<>();
     public static ArrayList<Voluntad> arrayVoluntad = new ArrayList<>();
+    Button boton;
+    TextView tvHeridas, tviniciativa, tvataqueMagico, tvataqueFisico, tvdefensa, tvmovimiento, tvcarrera, tvPAs, tvUmbralHeridas;
 
     @Override
     public boolean onSupportNavigateUp(){
@@ -39,43 +45,108 @@ public class Dados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados);
 
+        boton = findViewById(R.id.boton);
+        tviniciativa = findViewById(R.id.tviniciativa);
+        tvataqueMagico = findViewById(R.id.tvataqueMagico);
+        tvataqueFisico = findViewById(R.id.tvataqueFisico);
+        tvdefensa = findViewById(R.id.tvdefensa);
+        tvmovimiento = findViewById(R.id.tmovimiento);
+        tvcarrera = findViewById(R.id.tvcarrera);
+        tvPAs = findViewById(R.id.tvPAs);
+        tvUmbralHeridas = findViewById(R.id.tvUmbralHeridas);
+        tvHeridas = findViewById(R.id.tvHeridas);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rellenarArrays();
 
-        System.out.println("Carisma: " +arrayCarisma.size());
-        for (int i = 0; i < arrayCarisma.size(); i++) {
-            System.out.println(arrayCarisma.get(i).toString());
-        }
+        //Movimiento (m)
+        //atletismo
+        int atletismo= arrayVigor.get(Build.idEscogido-1).getAtletismo();
+        tvmovimiento.setText("Movimento; Vigor: "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + Atletismo: "+atletismo+"= "+(arrayVigor.get(Build.idEscogido-1).getVigor()+atletismo)+" m.");
 
-        System.out.println("Destreza: " +arrayDestreza.size());
-        for (int i = 0; i < arrayDestreza.size(); i++) {
-            System.out.println(arrayDestreza.get(i).toString());
-        }
+        //de carrera (m)
+        tvcarrera.setText("Carrera; (Vigor : "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + Atletismo: "+atletismo+")*4= "+((arrayVigor.get(Build.idEscogido-1).getVigor()+atletismo)*4)+" m.");
 
-        System.out.println("Vigor: " +arrayVigor.size());
-        for (int i = 0; i < arrayVigor.size(); i++) {
-            System.out.println(arrayVigor.get(i).toString());
-        }
+        //defensa
+        int defensa = arrayDestreza.get(Build.idEscogido-1).getDestreza();
+        int esquivar = arrayDestreza.get(Build.idEscogido-1).getEsquivar();
+        tvdefensa.setText("Defensa; 5 + Destreza " + defensa+" + Esquivar: "+esquivar+" = "+(5+defensa+esquivar));
 
-        System.out.println("Inteligencia: " +arrayInteligencia.size());
-        for (int i = 0; i < arrayInteligencia.size(); i++) {
-            System.out.println(arrayInteligencia.get(i).toString());
-        }
+        //Puntos de Aguante (PA): (Base por etapa + Vigor + Voluntad)
+        tvPAs.setText("Puntos de aguante; "+paBase(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + "+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()+" = "+(paBase(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVigor.get(Build.idEscogido-1).getVigor()+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()));
 
-        System.out.println("Percepcion: " +arrayPercepcion.size());
-        for (int i = 0; i < arrayPercepcion.size(); i++) {
-            System.out.println(arrayPercepcion.get(i).toString());
-        }
+        //Umbral de Heridas: (Base por etapa + Vigor).
+        tvUmbralHeridas.setText("Umbral de Heridas; "+umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVigor.get(Build.idEscogido-1).getVigor()+"= "+(umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVigor.get(Build.idEscogido-1).getVigor()));
 
-        System.out.println("Poder: " +arrayPoder.size());
-        for (int i = 0; i < arrayPoder.size(); i++) {
-            System.out.println(arrayPoder.get(i).toString());
-        }
+        //Heridas: (Base por etapa + Voluntad)
+        tvHeridas.setText("Heridas; "+umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()+" = "+(umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()));
 
-        System.out.println("Voluntad: " +arrayVoluntad.size());
-        for (int i = 0; i < arrayVoluntad.size(); i++) {
-            System.out.println(arrayVoluntad.get(i).toString());
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //dado iniciativa
+                int dado = (int) (Math.random() * 10) + 1;
+                //percepcion
+                int percep= arrayPercepcion.get(Build.idEscogido-1).getPercepcion();
+                //iniciativa
+                int ini= arrayPercepcion.get(Build.idEscogido-1).getIniciativa();
+                tviniciativa.setText("Iniciativa; D10: "+dado+" + Percepción: "+percep+" + Iniciativa: "+ini+"= "+(dado+percep+ini));
+
+                //dado ataque mágico
+                dado = (int) (Math.random() * 10) + 1;
+                //poder
+                int poder= arrayPoder.get(Build.idEscogido-1).getPoder();
+                //duelo
+                int duelo= arrayPoder.get(Build.idEscogido-1).getDuelo();
+                tvataqueMagico.setText("Ataque mágico; D10: "+dado+" + Poder: "+poder+" + Duelo: "+duelo+"= "+(dado+poder+duelo));
+
+                //dado ataque físico
+                //dado
+                dado = (int) (Math.random() * 10) + 1;
+                //vigor
+                int vigor= arrayVigor.get(Build.idEscogido-1).getVigor();
+                //pelea
+                int pelea= arrayVigor.get(Build.idEscogido-1).getPelea();
+                tvataqueFisico.setText("Ataque físico; D10: "+dado+" + Vigor: "+vigor+" + Pelea: "+pelea+"= "+(dado+vigor+pelea));
+            }
+        });
+
+    }
+
+    private int paBase(String etapa) {
+        if (etapa.equals("Infante")) {
+            return 8;
+        } else if (etapa.equals("Adolescente")) {
+            return 12;
+        } else if (etapa.equals("Joven")) {
+            return 17;
+        } else if (etapa.equals("Adulto")) {
+            return 17;
+        } else if (etapa.equals("Experimentado")) {
+            return 12;
+        } else if (etapa.equals("Veterano")) {
+            return 8;
+        } else {
+            return 0;
+        }
+    }
+
+    private int umbralHeridas(String etapa) {
+        if (etapa.equals("Infante")) {
+            return 1;
+        } else if (etapa.equals("Adolescente")) {
+            return 2;
+        } else if (etapa.equals("Joven")) {
+            return 3;
+        } else if (etapa.equals("Adulto")) {
+            return 3;
+        } else if (etapa.equals("Experimentado")) {
+            return 2;
+        } else if (etapa.equals("Veterano")) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 

@@ -18,4 +18,13 @@
         <item>Maestro (+7)</item>
     </array>
 
+    <array name="etapas">
+        <item>Infante</item>
+        <item>Adolescente</item>
+        <item>Joven</item>
+        <item>Adulto</item>
+        <item>Experimentado</item>
+        <item>Veterano</item>
+    </array>
+
 </resources>

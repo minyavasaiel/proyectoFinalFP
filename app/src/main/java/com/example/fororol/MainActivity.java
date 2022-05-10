@@ -105,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
             do {
                 int idpj = (cursor.getInt(0));
                 String nombre = (cursor.getString(1));
-                Pj pj = new Pj(idpj, nombre);
+                String etapa = (cursor.getString(2));
+                Pj pj = new Pj(idpj, nombre, etapa);
                 pjs.add(pj);
             } while (cursor.moveToNext());
         } else {

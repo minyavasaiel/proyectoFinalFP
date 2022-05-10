@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="4"
-    android:rowCount="32"
+    android:rowCount="33"
     android:layout_margin="15dp"
     android:padding="10dp"
     tools:context=".Build">
@@ -376,6 +376,17 @@
     <Spinner
         android:id="@+id/supervivencia"
         android:entries="@array/habilidades"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Etapa"
+        android:layout_columnSpan="2"/>
+
+    <Spinner
+        android:id="@+id/etapa"
+        android:entries="@array/etapas"
+        android:layout_columnSpan="2"/>
 
     <Button
         android:layout_width="wrap_content"

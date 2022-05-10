@@ -10,7 +10,7 @@
         android:title="Calculadora" />
     <item
         android:id="@+id/dados"
-        android:title="Dados" />
+        android:title="Combate" />
     <item
         android:id="@+id/foro"
         android:title="Foro" />

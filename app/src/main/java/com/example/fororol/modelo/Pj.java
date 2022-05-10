@@ -3,13 +3,15 @@ package com.example.fororol.modelo;
 public class Pj {
     private int idPj;
     private String nombre;
+    private String etapa;
 
     public Pj() {
     }
 
-    public Pj(int idPj, String nombre) {
+    public Pj(int idPj, String nombre, String etapa) {
         this.idPj = idPj;
         this.nombre = nombre;
+        this.etapa = etapa;
     }
 
     public int getIdPj() {
@@ -28,8 +30,20 @@ public class Pj {
         this.nombre = nombre;
     }
 
+    public String getEtapa() {
+        return etapa;
+    }
+
+    public void setEtapa(String etapa) {
+        this.etapa = etapa;
+    }
+
     @Override
     public String toString() {
-        return "Pj{" + "idPj=" + idPj + ", nombre=" + nombre + '}';
+        return "Pj{" +
+                "idPj=" + idPj +
+                ", nombre='" + nombre + '\'' +
+                ", etapa='" + etapa + '\'' +
+                '}';
     }
 }

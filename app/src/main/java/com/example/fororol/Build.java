@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class Build extends AppCompatActivity {
     private Spinner vigor, poder, destreza, carisma, voluntad, percepcion, inteligencia;
-    private Spinner atletismo, pelea, esquivar, latrocinio, sigilo, volar, coordinacion, intimidacion, oratoria, seducir, subterfugio, duelo, pociones, rituales, arte, estilo, frialdad, alerta, consciencia, empatia, iniciativa, investigacion, adivinacion, arcanismo, callejeo, culturaM, culturaMu, herbologia, magizoologia, medicina, politica, supervivencia;
+    private Spinner etapa, atletismo, pelea, esquivar, latrocinio, sigilo, volar, coordinacion, intimidacion, oratoria, seducir, subterfugio, duelo, pociones, rituales, arte, estilo, frialdad, alerta, consciencia, empatia, iniciativa, investigacion, adivinacion, arcanismo, callejeo, culturaM, culturaMu, herbologia, magizoologia, medicina, politica, supervivencia;
     private Button bactualiar;
     private TextView titulo;
     private ArrayList arrayVigor = new ArrayList<Vigor>();
@@ -89,8 +89,10 @@ public class Build extends AppCompatActivity {
 
        bactualiar = findViewById(R.id.bactualizar);
        titulo = findViewById(R.id.titulo);
+       etapa = findViewById(R.id.etapa);
 
        titulo.setText("Ficha de "+MainActivity.nombrePj);
+
 
        //poner los datos de la base de datos y arrays Modelo
         DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
@@ -154,6 +156,11 @@ public class Build extends AppCompatActivity {
             medicina.setSelection(reversoHabilidad(fila.getInt(9)));
             politica.setSelection(reversoHabilidad(fila.getInt(10)));
             supervivencia.setSelection(reversoHabilidad(fila.getInt(11)));
+        }
+
+        fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PJ+"' WHERE idpj= '"+ idEscogido+" '", null);
+        if (fila.moveToFirst()) {
+            etapa.setSelection(reversoEtapa(fila.getString(2)));
         }
         db.close();
 
@@ -396,10 +403,15 @@ public class Build extends AppCompatActivity {
 
         int cantidad7 = db2.update(DbHelper.TABLE_INTELIGENCIA, registro7, "idi= "+idEscogido, null);
 
+        //actualizar etapa
+        String updateetapa = etapa.getSelectedItem().toString();
+        ContentValues registro8 = new ContentValues();
+        registro8.put("etapa", updateetapa);
+        int cantidad8 = db2.update(DbHelper.TABLE_PJ, registro8, "idpj= "+idEscogido, null);
 
         db2.close();
 
-        if ( cantidad==1 && cantidad2 == 1 && cantidad3 == 1 && cantidad4 == 1 && cantidad5 == 1 && cantidad6 == 1 && cantidad7 == 1) {
+        if ( cantidad==1 && cantidad2 == 1 && cantidad3 == 1 && cantidad4 == 1 && cantidad5 == 1 && cantidad6 == 1 && cantidad7 == 1 && cantidad8 == 1){
             Toast.makeText(this, "Ficha actualizada correctamente", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Error: ficha no actualizada", Toast.LENGTH_LONG).show();
@@ -438,5 +450,22 @@ public class Build extends AppCompatActivity {
         }
     }
 
+    public int reversoEtapa (String datoTabla) {
+        if (datoTabla.equals("Infante")) {
+            return 0;
+        } else if (datoTabla.equals("Adolescente")) {
+            return 1;
+        } else if (datoTabla.equals("Joven")){
+            return 2;
+        } else if (datoTabla.equals("Adulto")){
+            return 3;
+        } else if (datoTabla.equals("Experimentado")) {
+            return 4;
+        } else if (datoTabla.equals("Veterano")){
+            return 5;
+        } else {
+            return -1;
+        }
+    }
 
 }
