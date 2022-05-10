@@ -19,6 +19,7 @@
     </array>
 
     <array name="etapas">
+        <item>Selecciona</item>
         <item>Infante</item>
         <item>Adolescente</item>
         <item>Joven</item>

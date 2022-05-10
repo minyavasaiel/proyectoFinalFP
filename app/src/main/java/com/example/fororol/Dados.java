@@ -31,6 +31,8 @@ public class Dados extends AppCompatActivity {
     public static ArrayList<Percepcion> arrayPercepcion = new ArrayList<>();
     public static ArrayList<Poder> arrayPoder = new ArrayList<>();
     public static ArrayList<Voluntad> arrayVoluntad = new ArrayList<>();
+    private boolean carisma = false, destreza = false, vigor = false, inteligencia = false, percepcion = false, poder = false, voluntad = false;
+    private int posicion = 0;
     Button boton;
     TextView tvHeridas, tviniciativa, tvataqueMagico, tvataqueFisico, tvdefensa, tvmovimiento, tvcarrera, tvPAs, tvUmbralHeridas;
 
@@ -60,54 +62,62 @@ public class Dados extends AppCompatActivity {
 
         rellenarArrays();
 
-        //Movimiento (m)
-        //atletismo
-        int atletismo= arrayVigor.get(Build.idEscogido-1).getAtletismo();
-        tvmovimiento.setText("Movimento; Vigor: "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + Atletismo: "+atletismo+"= "+(arrayVigor.get(Build.idEscogido-1).getVigor()+atletismo)+" m.");
+        //conseguir la posición del pj en arrays
+        for (int i=0; i<MainActivity.pjs.size(); i++){
+            if (MainActivity.pjs.get(i).getIdPj()==Build.idEscogido){
+                posicion = i;
+            }
+        }
+        if (carisma && destreza && vigor && inteligencia && percepcion && poder && voluntad) {
+            //atletismo
+            int atletismo= arrayVigor.get(posicion).getAtletismo();
+            tvmovimiento.setText("Movimento; Vigor: "+arrayVigor.get(posicion).getVigor()+" + Atletismo: "+atletismo+"= "+(arrayVigor.get(posicion).getVigor()+atletismo)+" m.");
 
-        //de carrera (m)
-        tvcarrera.setText("Carrera; (Vigor : "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + Atletismo: "+atletismo+")*4= "+((arrayVigor.get(Build.idEscogido-1).getVigor()+atletismo)*4)+" m.");
+            //de carrera (m)
+            tvcarrera.setText("Carrera; (Vigor : "+arrayVigor.get(posicion).getVigor()+" + Atletismo: "+atletismo+")*4= "+((arrayVigor.get(posicion).getVigor()+atletismo)*4)+" m.");
 
-        //defensa
-        int defensa = arrayDestreza.get(Build.idEscogido-1).getDestreza();
-        int esquivar = arrayDestreza.get(Build.idEscogido-1).getEsquivar();
-        tvdefensa.setText("Defensa; 5 + Destreza " + defensa+" + Esquivar: "+esquivar+" = "+(5+defensa+esquivar));
+            //defensa
+            int defensa = arrayDestreza.get(posicion).getDestreza();
+            int esquivar = arrayDestreza.get(posicion).getEsquivar();
+            tvdefensa.setText("Defensa; 5 + Destreza " + defensa+" + Esquivar: "+esquivar+" = "+(5+defensa+esquivar));
 
-        //Puntos de Aguante (PA): (Base por etapa + Vigor + Voluntad)
-        tvPAs.setText("Puntos de aguante; "+paBase(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVigor.get(Build.idEscogido-1).getVigor()+" + "+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()+" = "+(paBase(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVigor.get(Build.idEscogido-1).getVigor()+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()));
+            //Puntos de Aguante (PA): (Base por etapa + Vigor + Voluntad)
+            tvPAs.setText("Puntos de aguante; "+paBase(MainActivity.pjs.get(posicion).getEtapa())+" + "+arrayVigor.get(posicion).getVigor()+" + "+arrayVoluntad.get(posicion).getVoluntad()+" = "+(paBase(MainActivity.pjs.get(posicion).getEtapa())+arrayVigor.get(posicion).getVigor()+arrayVoluntad.get(posicion).getVoluntad()));
 
-        //Umbral de Heridas: (Base por etapa + Vigor).
-        tvUmbralHeridas.setText("Umbral de Heridas; "+umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVigor.get(Build.idEscogido-1).getVigor()+"= "+(umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVigor.get(Build.idEscogido-1).getVigor()));
+            //Umbral de Heridas: (Base por etapa + Vigor).
+            tvUmbralHeridas.setText("Umbral de Heridas; "+umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+" + "+arrayVigor.get(posicion).getVigor()+"= "+(umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+arrayVigor.get(posicion).getVigor()));
 
-        //Heridas: (Base por etapa + Voluntad)
-        tvHeridas.setText("Heridas; "+umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+" + "+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()+" = "+(umbralHeridas(MainActivity.pjs.get(Build.idEscogido-1).getEtapa())+arrayVoluntad.get(Build.idEscogido-1).getVoluntad()));
-
+            //Heridas: (Base por etapa + Voluntad)
+            tvHeridas.setText("Heridas; "+umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+" + "+arrayVoluntad.get(posicion).getVoluntad()+" = "+(umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+arrayVoluntad.get(posicion).getVoluntad()));
+        } else {
+            Toast.makeText(this, "No se ha completado la ficha de personaje", Toast.LENGTH_SHORT).show();
+        }
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //dado iniciativa
                 int dado = (int) (Math.random() * 10) + 1;
                 //percepcion
-                int percep= arrayPercepcion.get(Build.idEscogido-1).getPercepcion();
+                int percep= arrayPercepcion.get(posicion).getPercepcion();
                 //iniciativa
-                int ini= arrayPercepcion.get(Build.idEscogido-1).getIniciativa();
+                int ini= arrayPercepcion.get(posicion).getIniciativa();
                 tviniciativa.setText("Iniciativa; D10: "+dado+" + Percepción: "+percep+" + Iniciativa: "+ini+"= "+(dado+percep+ini));
 
                 //dado ataque mágico
                 dado = (int) (Math.random() * 10) + 1;
                 //poder
-                int poder= arrayPoder.get(Build.idEscogido-1).getPoder();
+                int poder= arrayPoder.get(posicion).getPoder();
                 //duelo
-                int duelo= arrayPoder.get(Build.idEscogido-1).getDuelo();
+                int duelo= arrayPoder.get(posicion).getDuelo();
                 tvataqueMagico.setText("Ataque mágico; D10: "+dado+" + Poder: "+poder+" + Duelo: "+duelo+"= "+(dado+poder+duelo));
 
                 //dado ataque físico
                 //dado
                 dado = (int) (Math.random() * 10) + 1;
                 //vigor
-                int vigor= arrayVigor.get(Build.idEscogido-1).getVigor();
+                int vigor= arrayVigor.get(posicion).getVigor();
                 //pelea
-                int pelea= arrayVigor.get(Build.idEscogido-1).getPelea();
+                int pelea= arrayVigor.get(posicion).getPelea();
                 tvataqueFisico.setText("Ataque físico; D10: "+dado+" + Vigor: "+vigor+" + Pelea: "+pelea+"= "+(dado+vigor+pelea));
             }
         });
@@ -151,11 +161,26 @@ public class Dados extends AppCompatActivity {
     }
 
     private void rellenarArrays() {
-        //meter en modelo Carisma
-        arrayCarisma.clear();
+        //actualizar pjs
+        MainActivity.pjs.clear();
         DbHelper dbhelper = new DbHelper(Dados.this);
         SQLiteDatabase dblectura = dbhelper.getReadableDatabase();
-        Cursor cursor = dblectura.rawQuery("SELECT * FROM  " + DbHelper.TABLE_CARISMA + "", null);
+        Cursor cursor = dblectura.rawQuery("SELECT * FROM  " + DbHelper.TABLE_PJ + "", null);
+        if (cursor.moveToFirst()) {
+            do {
+                int idpj = (cursor.getInt(0));
+                String nombre = (cursor.getString(1));
+                String etapa = (cursor.getString(2));
+                Pj pj = new Pj(idpj, nombre, etapa);
+                MainActivity.pjs.add(pj);
+            } while (cursor.moveToNext());
+        } else {
+            Toast.makeText(this, "No hay pjs", Toast.LENGTH_LONG).show();
+        }
+
+        //meter en modelo Carisma
+        arrayCarisma.clear();
+        cursor = dblectura.rawQuery("SELECT * FROM  " + DbHelper.TABLE_CARISMA + "", null);
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
@@ -168,10 +193,10 @@ public class Dados extends AppCompatActivity {
                 Carisma carismaObjeto = new Carisma(id, carisma, coordinacion, intimidacion, oratoria, seducir, subterfugio);
                 arrayCarisma.add(carismaObjeto);
             } while (cursor.moveToNext());
+            carisma=true;
         } else {
             Toast.makeText(this, "No hay carisma", Toast.LENGTH_LONG).show();
         }
-
         //meter en modelo Destreza
         arrayDestreza.clear();
         Cursor cursor1 = dblectura.rawQuery("SELECT * FROM  " + DbHelper.TABLE_DEX + "", null);
@@ -186,6 +211,7 @@ public class Dados extends AppCompatActivity {
                 Destreza destrezaObjeto = new Destreza(id, dex, esquivar, latrocinio, sigilo, volar);
                 arrayDestreza.add(destrezaObjeto);
             } while (cursor1.moveToNext());
+            destreza=true;
         } else {
             Toast.makeText(this, "No hay destreza", Toast.LENGTH_LONG).show();
         }
@@ -202,6 +228,7 @@ public class Dados extends AppCompatActivity {
                 Vigor vigorObjeto = new Vigor(id, vigor, atletismo, pelea);
                 arrayVigor.add(vigorObjeto);
             } while (cursor2.moveToNext());
+            vigor=true;
         } else {
             Toast.makeText(this, "No hay vigor", Toast.LENGTH_LONG).show();
         }
@@ -226,6 +253,7 @@ public class Dados extends AppCompatActivity {
                 Inteligencia inteligenciaObjeto = new Inteligencia(id, inteligencia, adivinacion, arcanismo, callejeo, culturaMagica, culturaMuggle, herbologia, magizoologia, medicina, politica, supervivencia);
                 arrayInteligencia.add(inteligenciaObjeto);
             } while (cursor3.moveToNext());
+            inteligencia=true;
         } else {
             Toast.makeText(this, "No hay inteligencia", Toast.LENGTH_LONG).show();
         }
@@ -245,6 +273,7 @@ public class Dados extends AppCompatActivity {
                 Percepcion percepcionObjeto = new Percepcion(id, percepcion, alerta, conciencia, empatia, iniciativa, investigacion);
                 arrayPercepcion.add(percepcionObjeto);
             } while (cursor4.moveToNext());
+            percepcion=true;
         } else {
             Toast.makeText(this, "No hay percepcion", Toast.LENGTH_LONG).show();
         }
@@ -262,6 +291,7 @@ public class Dados extends AppCompatActivity {
                 Poder poderObjeto = new Poder(id, poder, duelo, pocion, ritual);
                 arrayPoder.add(poderObjeto);
             } while (cursor5.moveToNext());
+            poder=true;
         } else {
             Toast.makeText(this, "No hay poder", Toast.LENGTH_LONG).show();
         }
@@ -279,6 +309,7 @@ public class Dados extends AppCompatActivity {
                 Voluntad voluntadObjeto = new Voluntad(id, voluntad, arte, estilo, frialdad);
                 arrayVoluntad.add(voluntadObjeto);
             } while (cursor6.moveToNext());
+            voluntad=true;
         } else {
             Toast.makeText(this, "No hay voluntad", Toast.LENGTH_LONG).show();
         }

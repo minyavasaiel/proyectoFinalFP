@@ -161,6 +161,7 @@ public class Build extends AppCompatActivity {
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PJ+"' WHERE idpj= '"+ idEscogido+" '", null);
         if (fila.moveToFirst()) {
             etapa.setSelection(reversoEtapa(fila.getString(2)));
+            //System.out.println("Etapa------------------------>" +reversoEtapa(fila.getString(2)));
         }
         db.close();
 
@@ -183,7 +184,7 @@ public class Build extends AppCompatActivity {
     public void insert(){
         DbHelper dbHelper = new DbHelper(getApplicationContext()); //Build.this
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        boolean comprobador1= false, comprobador2 = false, comprobador3=false, comprobador4= false, comprobador5 = false, comprobador6= false, comprobador7= false;
+        boolean comprobador1= false, comprobador2 = false, comprobador3=false, comprobador4= false, comprobador5 = false, comprobador6= false, comprobador7= false, comprobador8=false;
                 String query= "SELECT * FROM '"+DbHelper.TABLE_VIGOR+"' ";
                 if (db.rawQuery(query, null) !=null){
                     ContentValues registro = new ContentValues();
@@ -272,7 +273,12 @@ public class Build extends AppCompatActivity {
                     db.insert(dbHelper.TABLE_INTELIGENCIA, null, registro);
                     comprobador7 = true;
                 }
-                if (comprobador1 && comprobador2 && comprobador3 && comprobador4 && comprobador5 && comprobador6 && comprobador7) {
+        //actualizar etapa
+        String updateetapa = etapa.getSelectedItem().toString();
+        ContentValues registro8 = new ContentValues();
+        registro8.put("etapa", updateetapa);
+        int cantidad8 = db.update(DbHelper.TABLE_PJ, registro8, "idpj= "+idEscogido, null);
+                if (comprobador1 && comprobador2 && comprobador3 && comprobador4 && comprobador5 && comprobador6 && comprobador7 && cantidad8==1){
                     Toast.makeText(getApplicationContext(), "Datos insertados correctamente.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Datos insertados correctamente.", Toast.LENGTH_LONG).show();
@@ -452,17 +458,19 @@ public class Build extends AppCompatActivity {
 
     public int reversoEtapa (String datoTabla) {
         if (datoTabla.equals("Infante")) {
-            return 0;
-        } else if (datoTabla.equals("Adolescente")) {
             return 1;
-        } else if (datoTabla.equals("Joven")){
+        } else if (datoTabla.equals("Adolescente")) {
             return 2;
-        } else if (datoTabla.equals("Adulto")){
+        } else if (datoTabla.equals("Joven")){
             return 3;
-        } else if (datoTabla.equals("Experimentado")) {
+        } else if (datoTabla.equals("Adulto")){
             return 4;
-        } else if (datoTabla.equals("Veterano")){
+        } else if (datoTabla.equals("Experimentado")) {
             return 5;
+        } else if (datoTabla.equals("Veterano")){
+            return 6;
+        } else if (datoTabla==null){
+            return 0;
         } else {
             return -1;
         }

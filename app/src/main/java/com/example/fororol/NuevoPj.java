@@ -49,6 +49,7 @@ public class NuevoPj extends AppCompatActivity {
                     ContentValues registro = new ContentValues();
                     registro.put("idpj", lastId+1);
                     registro.put("nombre", editText.getText().toString());
+                    registro.put("etapa", "0");
                     db.insert(dbhelper.TABLE_PJ, null, registro);
                 }
                 Intent intent = new Intent(NuevoPj.this, MainActivity.class);

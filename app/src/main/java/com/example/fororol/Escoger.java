@@ -78,7 +78,7 @@ public class Escoger extends AppCompatActivity {
         bpj1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=1;
+                Build.idEscogido=MainActivity.pjs.get(0).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -87,7 +87,7 @@ public class Escoger extends AppCompatActivity {
         bpj2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=2;
+                Build.idEscogido=MainActivity.pjs.get(1).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -96,7 +96,7 @@ public class Escoger extends AppCompatActivity {
         bpj3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=3;
+                Build.idEscogido=MainActivity.pjs.get(2).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -105,7 +105,7 @@ public class Escoger extends AppCompatActivity {
         bpj4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=4;
+                Build.idEscogido=MainActivity.pjs.get(3).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -114,7 +114,7 @@ public class Escoger extends AppCompatActivity {
         bpj5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=5;
+                Build.idEscogido=MainActivity.pjs.get(4).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -123,7 +123,7 @@ public class Escoger extends AppCompatActivity {
         bpj6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=6;
+                Build.idEscogido=MainActivity.pjs.get(5).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -132,7 +132,7 @@ public class Escoger extends AppCompatActivity {
         bpj7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=7;
+                Build.idEscogido=MainActivity.pjs.get(6).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -141,20 +141,20 @@ public class Escoger extends AppCompatActivity {
         bpj8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=8;
+                Build.idEscogido=MainActivity.pjs.get(7).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
-        }    );
+        });
 
         bpj9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build.idEscogido=9;
+                Build.idEscogido=MainActivity.pjs.get(8).getIdPj();
                 Intent intent = new Intent(Escoger.this, MainActivity.class);
                 startActivity(intent);
             }
-        }   );
+        });
 
     }
 }

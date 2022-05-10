@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private String url = "https://hp-avada-kedavra.foroactivo.com/";
     public static ArrayList<Pj> pjs = new ArrayList<>();
     public static String nombrePj;
-    Button btn, btnescoger;
+    Button btn, btnescoger, bborrar;
     TextView tvpjEscogido;
 
 
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btn = (Button) findViewById(R.id.bAnhadir);
         btnescoger = (Button) findViewById(R.id.bEscoger);
         tvpjEscogido = (TextView) findViewById(R.id.tvpjEscogido);
+        bborrar = (Button) findViewById(R.id.bborrar);
 
         DbHelper dbhelper = new DbHelper(MainActivity.this);
         SQLiteDatabase db = dbhelper.getWritableDatabase();
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error al cargar la base de datos", Toast.LENGTH_LONG).show();
         }
+        db.close();
         //Cargar Array de pjs
         cargarPjs();
         comprobarBoton();
@@ -84,14 +86,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bborrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DbHelper dbhelper = new DbHelper(MainActivity.this);
+                SQLiteDatabase db = dbhelper.getWritableDatabase();
+                if (Build.idEscogido==0){
+                    Toast.makeText(MainActivity.this, "No hay pj escogido.", Toast.LENGTH_LONG).show();
+                } else {
+                    int cantidad = db.delete(DbHelper.TABLE_PJ, "idpj ="+ Build.idEscogido, null);
+                    int cantidad2 = db.delete(DbHelper.TABLE_DEX, "idd ="+ Build.idEscogido, null);
+                    int cantidad3 = db.delete(DbHelper.TABLE_CARISMA, "idc ="+ Build.idEscogido, null);
+                    int cantidad4 = db.delete(DbHelper.TABLE_INTELIGENCIA, "idi ="+ Build.idEscogido, null);
+                    int cantidad5 = db.delete(DbHelper.TABLE_VIGOR, "idv ="+ Build.idEscogido, null);
+                    int cantidad6 = db.delete(DbHelper.TABLE_PERCEPCION, "idpe ="+ Build.idEscogido, null);
+                    int cantidad7 = db.delete(DbHelper.TABLE_PODER, "idp ="+ Build.idEscogido, null);
+                    int cantidad8 = db.delete(DbHelper.TABLE_VOLUNTAD, "idvo ="+ Build.idEscogido, null);
+                    db.close();
+                }
+                Build.idEscogido = 0;
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     private void comprobarBoton() {
         if (pjs.isEmpty()) {
             btnescoger.setEnabled(false);
+            bborrar.setEnabled(false);
         }
         if (pjs.size() == 9) {
             btn.setEnabled(false);
+        }
+        if (Build.idEscogido==0){
+            bborrar.setEnabled(false);
         }
     }
 
@@ -112,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No hay pjs", Toast.LENGTH_LONG).show();
         }
+        dblectura.close();
         for (Pj pj : pjs) {
             System.out.println(pj.toString());
         }
