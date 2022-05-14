@@ -69,6 +69,7 @@ public class Dados extends AppCompatActivity {
             }
         }
         if (carisma && destreza && vigor && inteligencia && percepcion && poder && voluntad) {
+            boton.setEnabled(true);
             //atletismo
             int atletismo= arrayVigor.get(posicion).getAtletismo();
             tvmovimiento.setText("Movimento; Vigor: "+arrayVigor.get(posicion).getVigor()+" + Atletismo: "+atletismo+"= "+(arrayVigor.get(posicion).getVigor()+atletismo)+" m.");
@@ -91,6 +92,7 @@ public class Dados extends AppCompatActivity {
             tvHeridas.setText("Heridas; "+umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+" + "+arrayVoluntad.get(posicion).getVoluntad()+" = "+(umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())+arrayVoluntad.get(posicion).getVoluntad()));
         } else {
             Toast.makeText(this, "No se ha completado la ficha de personaje", Toast.LENGTH_SHORT).show();
+            boton.setEnabled(false);
         }
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +162,7 @@ public class Dados extends AppCompatActivity {
         }
     }
 
-    private void rellenarArrays() {
+    public void rellenarArrays() {
         //actualizar pjs
         MainActivity.pjs.clear();
         DbHelper dbhelper = new DbHelper(Dados.this);

@@ -24,7 +24,7 @@ public class Build extends AppCompatActivity {
     private Spinner etapa, atletismo, pelea, esquivar, latrocinio, sigilo, volar, coordinacion, intimidacion, oratoria, seducir, subterfugio, duelo, pociones, rituales, arte, estilo, frialdad, alerta, consciencia, empatia, iniciativa, investigacion, adivinacion, arcanismo, callejeo, culturaM, culturaMu, herbologia, magizoologia, medicina, politica, supervivencia;
     private Button bactualiar;
     private TextView titulo;
-    private ArrayList arrayVigor = new ArrayList<Vigor>();
+    //private ArrayList arrayVigor = new ArrayList<Vigor>();
     public static int idEscogido =0;
 
     @Override
@@ -177,6 +177,7 @@ public class Build extends AppCompatActivity {
                 } else {
                     insert();
                 }
+                db.close();
             }
         });
     }
@@ -192,6 +193,7 @@ public class Build extends AppCompatActivity {
                     registro.put("vigor", Integer.parseInt(vigor.getSelectedItem().toString()));
                     registro.put("atletismo",metodoConversorHabilidad(atletismo.getSelectedItem().toString()) );
                     registro.put("pelea", metodoConversorHabilidad(pelea.getSelectedItem().toString()));
+                    System.out.println("Atletismo: "+metodoConversorHabilidad(atletismo.getSelectedItem().toString()));
                     db.insert(dbHelper.TABLE_VIGOR, null, registro);
                     comprobador1 = true;
                 }
