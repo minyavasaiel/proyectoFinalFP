@@ -44,6 +44,9 @@ public class Calculadora extends AppCompatActivity {
     private TextView resultado;
     private Build build;
     private Dados dados;
+    private int total;
+    private int posicion;
+
 
     @Override
     public boolean onSupportNavigateUp(){
@@ -185,7 +188,1583 @@ public class Calculadora extends AppCompatActivity {
             }
         });
 
+        bcalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            for (int i = 0; i < MainActivity.pjs.size(); i++) {
+                if (MainActivity.pjs.get(i).getIdPj() == build.idEscogido) {
+                    posicion = i;
+                }
+            }
+            calcularVigor();
+            calcularDestreza();
+            calcularInteligencia();
+            calcularPercepcion();
+            calcularCarisma();
+            calcularVoluntad();
+            calcularPoder();
+            resultado.setText("" + total);
+            }
+        });
 
+
+    }
+
+    private void calcularPoder() {
+        if (Dados.arrayPoder.get(posicion).getPoder() < arrayDPoder.get(posicion).getPoder()) {
+            if (Dados.arrayPoder.get(posicion).getPoder() == 0) {
+                if (arrayDPoder.get(posicion).getPoder() == 1) {
+                    total = total + 250;
+                } else if (arrayDPoder.get(posicion).getPoder() == 2) {
+                    total = total + 550;
+                } else if (arrayDPoder.get(posicion).getPoder() == 3) {
+                    total = total + 950;
+                } else if (arrayDPoder.get(posicion).getPoder() == 4) {
+                    total = total + 1500;
+                } else if (arrayDPoder.get(posicion).getPoder() == 5) {
+                    total = total + 2250;
+                } else if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 3250;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 1) {
+                if (arrayDPoder.get(posicion).getPoder() == 2) {
+                    total = total + 300;
+                } else if (arrayDPoder.get(posicion).getPoder() == 3) {
+                    total = total + 700;
+                } else if (arrayDPoder.get(posicion).getPoder() == 4) {
+                    total = total + 1250;
+                } else if (arrayDPoder.get(posicion).getPoder() == 5) {
+                    total = total + 2000;
+                } else if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 3000;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 2) {
+                if (arrayDPoder.get(posicion).getPoder() == 3) {
+                    total = total + 400;
+                } else if (arrayDPoder.get(posicion).getPoder() == 4) {
+                    total = total + 950;
+                } else if (arrayDPoder.get(posicion).getPoder() == 5) {
+                    total = total + 1700;
+                } else if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 2700;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 3) {
+                if (arrayDPoder.get(posicion).getPoder() == 4) {
+                    total = total + 550;
+                } else if (arrayDPoder.get(posicion).getPoder() == 5) {
+                    total = total + 1300;
+                } else if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 2300;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 4) {
+                if (arrayDPoder.get(posicion).getPoder() == 5) {
+                    total = total + 750;
+                } else if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 1750;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 5) {
+                if (arrayDPoder.get(posicion).getPoder() == 6) {
+                    total = total + 1000;
+                } else if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPoder() == 6) {
+                if (arrayDPoder.get(posicion).getPoder() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayPoder.get(posicion).getDuelo() < arrayDPoder.get(posicion).getDuelo()) {
+            if (Dados.arrayPoder.get(posicion).getDuelo() == 0) {
+                if (arrayDPoder.get(posicion).getDuelo() == 1) {
+                    total = total + 75;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 2) {
+                    total = total + 225;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 4) {
+                    total = total + 475;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getDuelo() == 1) {
+                if (arrayDPoder.get(posicion).getDuelo() == 2) {
+                    total = total + 150;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 4) {
+                    total = total + 400;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getDuelo() == 2) {
+                if (arrayDPoder.get(posicion).getDuelo() == 4) {
+                    total = total + 250;
+                } else if (arrayDPoder.get(posicion).getDuelo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getDuelo() == 4) {
+                if (arrayDPoder.get(posicion).getDuelo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPoder.get(posicion).getPociones() < arrayDPoder.get(posicion).getPociones()) {
+            if (Dados.arrayPoder.get(posicion).getPociones() == 0) {
+                if (arrayDPoder.get(posicion).getPociones() == 1) {
+                    total = total + 75;
+                } else if (arrayDPoder.get(posicion).getPociones() == 2) {
+                    total = total + 225;
+                } else if (arrayDPoder.get(posicion).getPociones() == 4) {
+                    total = total + 475;
+                } else if (arrayDPoder.get(posicion).getPociones() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPociones() == 1) {
+                if (arrayDPoder.get(posicion).getPociones() == 2) {
+                    total = total + 150;
+                } else if (arrayDPoder.get(posicion).getPociones() == 4) {
+                    total = total + 400;
+                } else if (arrayDPoder.get(posicion).getPociones() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPociones() == 2) {
+                if (arrayDPoder.get(posicion).getPociones() == 4) {
+                    total = total + 250;
+                } else if (arrayDPoder.get(posicion).getPociones() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getPociones() == 4) {
+                if (arrayDPoder.get(posicion).getPociones() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPoder.get(posicion).getRituales() > arrayDPoder.get(posicion).getRituales()) {
+            if (Dados.arrayPoder.get(posicion).getRituales() == 0) {
+                if (arrayDPoder.get(posicion).getRituales() == 1) {
+                    total = total + 75;
+                } else if (arrayDPoder.get(posicion).getRituales() == 2) {
+                    total = total + 225;
+                } else if (arrayDPoder.get(posicion).getRituales() == 4) {
+                    total = total + 475;
+                } else if (arrayDPoder.get(posicion).getRituales() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getRituales() == 1) {
+                if (arrayDPoder.get(posicion).getRituales() == 2) {
+                    total = total + 150;
+                } else if (arrayDPoder.get(posicion).getRituales() == 4) {
+                    total = total + 400;
+                } else if (arrayDPoder.get(posicion).getRituales() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getRituales() == 2) {
+                if (arrayDPoder.get(posicion).getRituales() == 4) {
+                    total = total + 250;
+                } else if (arrayDPoder.get(posicion).getRituales() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPoder.get(posicion).getRituales() == 4) {
+                if (arrayDPoder.get(posicion).getRituales() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+    }
+
+    private void calcularVoluntad() {
+        if (Dados.arrayVoluntad.get(posicion).getVoluntad() < arrayDVoluntad.get(posicion).getVoluntad()) {
+            if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 0) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 1) {
+                    total = total + 250;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 2) {
+                    total = total + 550;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 3) {
+                    total = total + 950;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 4) {
+                    total = total + 1500;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 5) {
+                    total = total + 2250;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 3250;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 1) {
+                if (arrayDVigor.get(posicion).getVigor() == 2) {
+                    total = total + 300;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 3) {
+                    total = total + 700;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 4) {
+                    total = total + 1250;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 5) {
+                    total = total + 2000;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 3000;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 2) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 3) {
+                    total = total + 400;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 4) {
+                    total = total + 950;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 5) {
+                    total = total + 1700;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 2700;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 3) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 4) {
+                    total = total + 550;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 5) {
+                    total = total + 1300;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 2300;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 4) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 5) {
+                    total = total + 750;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 1750;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 5) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 6) {
+                    total = total + 1000;
+                } else if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getVoluntad() == 6) {
+                if (arrayDVoluntad.get(posicion).getVoluntad() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayVoluntad.get(posicion).getArte() < arrayDVoluntad.get(posicion).getArte()) {
+            if (Dados.arrayVoluntad.get(posicion).getArte() == 0) {
+                if (arrayDVoluntad.get(posicion).getArte() == 1) {
+                    total = total + 75;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 2) {
+                    total = total + 225;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 4) {
+                    total = total + 475;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getArte() == 1) {
+                if (arrayDVoluntad.get(posicion).getArte() == 2) {
+                    total = total + 150;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 4) {
+                    total = total + 400;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getArte() == 2) {
+                if (arrayDVoluntad.get(posicion).getArte() == 4) {
+                    total = total + 250;
+                } else if (arrayDVoluntad.get(posicion).getArte() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getArte() == 4) {
+                if (arrayDVoluntad.get(posicion).getArte() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayVoluntad.get(posicion).getEstilo() < arrayDVoluntad.get(posicion).getEstilo()) {
+            if (Dados.arrayVoluntad.get(posicion).getEstilo() == 0) {
+                if (arrayDVoluntad.get(posicion).getEstilo() == 1) {
+                    total = total + 75;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 2) {
+                    total = total + 225;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 4) {
+                    total = total + 475;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 7) {
+                    total = total + 875;
+                }
+            }  else if (Dados.arrayVoluntad.get(posicion).getEstilo() == 1) {
+                if (arrayDVoluntad.get(posicion).getEstilo() == 2) {
+                    total = total + 150;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 4) {
+                    total = total + 400;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getEstilo() == 2) {
+                if (arrayDVoluntad.get(posicion).getEstilo() == 4) {
+                    total = total + 250;
+                } else if (arrayDVoluntad.get(posicion).getEstilo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getEstilo() == 4) {
+                if (arrayDVoluntad.get(posicion).getEstilo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayVoluntad.get(posicion).getFrialdad() < arrayDVoluntad.get(posicion).getFrialdad()) {
+            if (Dados.arrayVoluntad.get(posicion).getFrialdad() == 0) {
+                if (arrayDVoluntad.get(posicion).getFrialdad() == 1) {
+                    total = total + 75;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 2) {
+                    total = total + 225;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 4) {
+                    total = total + 475;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getFrialdad() == 1) {
+                if (arrayDVoluntad.get(posicion).getFrialdad() == 2) {
+                    total = total + 150;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 4) {
+                    total = total + 400;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getFrialdad() == 2) {
+                if (arrayDVoluntad.get(posicion).getFrialdad() == 4) {
+                    total = total + 250;
+                } else if (arrayDVoluntad.get(posicion).getFrialdad() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayVoluntad.get(posicion).getFrialdad() == 4) {
+                if (arrayDVoluntad.get(posicion).getFrialdad() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+    }
+
+    private void calcularCarisma() {
+        if (Dados.arrayCarisma.get(posicion).getCarisma() < arrayDCarisma.get(posicion).getCarisma()) {
+            if (Dados.arrayCarisma.get(posicion).getCarisma() == 0) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 1) {
+                    total = total + 250;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 2) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 3) {
+                    total = total + 950;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 4) {
+                    total = total + 1500;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 5) {
+                    total = total + 2250;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 3250;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 1) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 2) {
+                    total = total + 300;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 3) {
+                    total = total + 700;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 4) {
+                    total = total + 1250;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 5) {
+                    total = total + 2000;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 3000;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 2) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 3) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 4) {
+                    total = total + 950;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 5) {
+                    total = total + 1700;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 2700;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 3) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 5) {
+                    total = total + 1300;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 2300;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 4) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 5) {
+                    total = total + 750;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 1750;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 5) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 6) {
+                    total = total + 1000;
+                } else if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCarisma() == 6) {
+                if (arrayDCarisma.get(posicion).getCarisma() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayCarisma.get(posicion).getCoordinacion() < arrayDCarisma.get(posicion).getCoordinacion()) {
+            if (Dados.arrayCarisma.get(posicion).getCoordinacion() == 0) {
+                if (arrayDCarisma.get(posicion).getCoordinacion() == 1) {
+                    total = total + 75;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 2) {
+                    total = total + 225;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 4) {
+                    total = total + 475;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCoordinacion() == 1) {
+                if (arrayDCarisma.get(posicion).getCoordinacion() == 2) {
+                    total = total + 150;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 4) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCoordinacion() == 2) {
+                if (arrayDCarisma.get(posicion).getCoordinacion() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getCoordinacion() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getCoordinacion() == 4) {
+                if (arrayDCarisma.get(posicion).getCoordinacion() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayCarisma.get(posicion).getIntimidacion() < arrayDCarisma.get(posicion).getIntimidacion()) {
+            if (Dados.arrayCarisma.get(posicion).getIntimidacion() == 0) {
+                if (arrayDCarisma.get(posicion).getIntimidacion() == 1) {
+                    total = total + 75;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 2) {
+                    total = total + 225;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 4) {
+                    total = total + 475;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getIntimidacion() == 1) {
+                if (arrayDCarisma.get(posicion).getIntimidacion() == 2) {
+                    total = total + 150;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 4) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getIntimidacion() == 2) {
+                if (arrayDCarisma.get(posicion).getIntimidacion() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getIntimidacion() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getIntimidacion() == 4) {
+                if (arrayDCarisma.get(posicion).getIntimidacion() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayCarisma.get(posicion).getOratoria() < arrayDCarisma.get(posicion).getOratoria()) {
+            if (Dados.arrayCarisma.get(posicion).getOratoria() == 0) {
+                if (arrayDCarisma.get(posicion).getOratoria() == 1) {
+                    total = total + 75;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 2) {
+                    total = total + 225;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 4) {
+                    total = total + 475;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getOratoria() == 1) {
+                if (arrayDCarisma.get(posicion).getOratoria() == 2) {
+                    total = total + 150;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 4) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getOratoria() == 2) {
+                if (arrayDCarisma.get(posicion).getOratoria() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getOratoria() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getOratoria() == 4) {
+                if (arrayDCarisma.get(posicion).getOratoria() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if ( Dados.arrayCarisma.get(posicion).getSeducir() < arrayDCarisma.get(posicion).getSeducir()){
+            if (Dados.arrayCarisma.get(posicion).getSeducir() == 0) {
+                if (arrayDCarisma.get(posicion).getSeducir() == 1) {
+                    total = total + 75;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 2) {
+                    total = total + 225;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 4) {
+                    total = total + 475;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getSeducir() == 1) {
+                if (arrayDCarisma.get(posicion).getSeducir() == 2) {
+                    total = total + 150;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 4) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getSeducir() == 2) {
+                if (arrayDCarisma.get(posicion).getSeducir() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getSeducir() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getSeducir() == 4) {
+                if (arrayDCarisma.get(posicion).getSeducir() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if ( Dados.arrayCarisma.get(posicion).getSubterfugio() < arrayDCarisma.get(posicion).getSubterfugio()){
+            if (Dados.arrayCarisma.get(posicion).getSubterfugio() == 0) {
+                if (arrayDCarisma.get(posicion).getSubterfugio() == 1) {
+                    total = total + 75;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 2) {
+                    total = total + 225;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 4) {
+                    total = total + 475;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 7) {
+                    total = total + 875;
+                }
+            }   else if (Dados.arrayCarisma.get(posicion).getSubterfugio() == 1) {
+                if (arrayDCarisma.get(posicion).getSubterfugio() == 2) {
+                    total = total + 150;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 4) {
+                    total = total + 400;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getSubterfugio() == 2) {
+                if (arrayDCarisma.get(posicion).getSubterfugio() == 4) {
+                    total = total + 550;
+                } else if (arrayDCarisma.get(posicion).getSubterfugio() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayCarisma.get(posicion).getSubterfugio() == 4) {
+                if (arrayDCarisma.get(posicion).getSubterfugio() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+    }
+
+    private void calcularPercepcion() {
+        if (Dados.arrayPercepcion.get(posicion).getPercepcion() < arrayDPercepcion.get(posicion).getPercepcion()) {
+            if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 0) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 1) {
+                    total = total + 250;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 2) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 3) {
+                    total = total + 950;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 4) {
+                    total = total + 1500;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 5) {
+                    total = total + 2250;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 3250;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 1) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 2) {
+                    total = total + 300;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 3) {
+                    total = total + 700;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 4) {
+                    total = total + 1250;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 5) {
+                    total = total + 2000;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 3000;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 2) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 3) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 4) {
+                    total = total + 950;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 5) {
+                    total = total + 1700;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 2700;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 3) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 5) {
+                    total = total + 1300;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 2300;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 4) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 5) {
+                    total = total + 750;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 1750;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 5) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 6) {
+                    total = total + 1000;
+                } else if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getPercepcion() == 6) {
+                if (arrayDPercepcion.get(posicion).getPercepcion() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayPercepcion.get(posicion).getAlerta() < arrayDPercepcion.get(posicion).getAlerta()) {
+            if (Dados.arrayPercepcion.get(posicion).getAlerta() == 0) {
+                if (arrayDPercepcion.get(posicion).getAlerta() == 1) {
+                    total = total + 75;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 2) {
+                    total = total + 225;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 4) {
+                    total = total + 475;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getAlerta() == 1) {
+                if (arrayDPercepcion.get(posicion).getAlerta() == 2) {
+                    total = total + 150;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 4) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getAlerta() == 2) {
+                if (arrayDPercepcion.get(posicion).getAlerta() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getAlerta() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getAlerta() == 4) {
+                if (arrayDPercepcion.get(posicion).getAlerta() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPercepcion.get(posicion).getConsciencia() > arrayDPercepcion.get(posicion).getConsciencia()) {
+            if (Dados.arrayPercepcion.get(posicion).getConsciencia() == 0) {
+                if (arrayDPercepcion.get(posicion).getConsciencia() == 1) {
+                    total = total + 75;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 2) {
+                    total = total + 225;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 4) {
+                    total = total + 475;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getConsciencia() == 1) {
+                if (arrayDPercepcion.get(posicion).getConsciencia() == 2) {
+                    total = total + 150;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 4) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getConsciencia() == 2) {
+                if (arrayDPercepcion.get(posicion).getConsciencia() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getConsciencia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getConsciencia() == 4) {
+                if (arrayDPercepcion.get(posicion).getConsciencia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPercepcion.get(posicion).getEmpatia() > arrayDPercepcion.get(posicion).getEmpatia()) {
+            if (Dados.arrayPercepcion.get(posicion).getEmpatia() == 0) {
+                if (arrayDPercepcion.get(posicion).getEmpatia() == 1) {
+                    total = total + 75;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 2) {
+                    total = total + 225;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 4) {
+                    total = total + 475;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getEmpatia() == 1) {
+                if (arrayDPercepcion.get(posicion).getEmpatia() == 2) {
+                    total = total + 150;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 4) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getEmpatia() == 2) {
+                if (arrayDPercepcion.get(posicion).getEmpatia() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getEmpatia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getEmpatia() == 4) {
+                if (arrayDPercepcion.get(posicion).getEmpatia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPercepcion.get(posicion).getIniciativa() > arrayDPercepcion.get(posicion).getIniciativa()) {
+            if (Dados.arrayPercepcion.get(posicion).getIniciativa() == 0) {
+                if (arrayDPercepcion.get(posicion).getIniciativa() == 1) {
+                    total = total + 75;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 2) {
+                    total = total + 225;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 4) {
+                    total = total + 475;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getIniciativa() == 1) {
+                if (arrayDPercepcion.get(posicion).getIniciativa() == 2) {
+                    total = total + 150;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 4) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getIniciativa() == 2) {
+                if (arrayDPercepcion.get(posicion).getIniciativa() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getIniciativa() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getIniciativa() == 4) {
+                if (arrayDPercepcion.get(posicion).getIniciativa() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayPercepcion.get(posicion).getInvestigacion() > arrayDPercepcion.get(posicion).getInvestigacion()) {
+            if (Dados.arrayPercepcion.get(posicion).getInvestigacion() == 0) {
+                if (arrayDPercepcion.get(posicion).getInvestigacion() == 1) {
+                    total = total + 75;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 2) {
+                    total = total + 225;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 4) {
+                    total = total + 475;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getInvestigacion() == 1) {
+                if (arrayDPercepcion.get(posicion).getInvestigacion() == 2) {
+                    total = total + 150;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 4) {
+                    total = total + 400;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getInvestigacion() == 2) {
+                if (arrayDPercepcion.get(posicion).getInvestigacion() == 4) {
+                    total = total + 550;
+                } else if (arrayDPercepcion.get(posicion).getInvestigacion() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayPercepcion.get(posicion).getInvestigacion() == 4) {
+                if (arrayDPercepcion.get(posicion).getInvestigacion() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+    }
+
+    private void calcularInteligencia() {
+        if (Dados.arrayInteligencia.get(posicion).getInteligencia() < arrayDInteligencia.get(posicion).getInteligencia()) {
+            if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 0) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 1) {
+                    total = total + 250;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 2) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 3) {
+                    total = total + 950;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 4) {
+                    total = total + 1500;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 5) {
+                    total = total + 2250;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 3250;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 1) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 2) {
+                    total = total + 300;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 3) {
+                    total = total + 700;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 4) {
+                    total = total + 1250;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 5) {
+                    total = total + 2000;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 3000;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 2) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 3) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 4) {
+                    total = total + 950;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 5) {
+                    total = total + 1700;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 2700;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 3) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 5) {
+                    total = total + 1300;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 2300;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 4) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 5) {
+                    total = total + 750;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 1750;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 5) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 6) {
+                    total = total + 1000;
+                } else if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getInteligencia() == 6) {
+                if (arrayDInteligencia.get(posicion).getInteligencia() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getAdivinacion() < arrayDInteligencia.get(posicion).getAdivinacion()) {
+            if (Dados.arrayInteligencia.get(posicion).getAdivinacion() == 0) {
+                if (arrayDInteligencia.get(posicion).getAdivinacion() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getAdivinacion() == 1) {
+                if (arrayDInteligencia.get(posicion).getAdivinacion() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getAdivinacion() == 2) {
+                if (arrayDInteligencia.get(posicion).getAdivinacion() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getAdivinacion() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getAdivinacion() == 4) {
+                if (arrayDInteligencia.get(posicion).getAdivinacion() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getArcanismo() < arrayDInteligencia.get(posicion).getArcanismo()) {
+            if (Dados.arrayInteligencia.get(posicion).getArcanismo() == 0) {
+                if (arrayDInteligencia.get(posicion).getArcanismo() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getArcanismo() == 1) {
+                if (arrayDInteligencia.get(posicion).getArcanismo() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getArcanismo() == 2) {
+                if (arrayDInteligencia.get(posicion).getArcanismo() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getArcanismo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getArcanismo() == 4) {
+                if (arrayDInteligencia.get(posicion).getArcanismo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getCallejeo() < arrayDInteligencia.get(posicion).getCallejeo()) {
+            if (Dados.arrayInteligencia.get(posicion).getCallejeo() == 0) {
+                if (arrayDInteligencia.get(posicion).getCallejeo() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCallejeo() == 1) {
+                if (arrayDInteligencia.get(posicion).getCallejeo() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCallejeo() == 2) {
+                if (arrayDInteligencia.get(posicion).getCallejeo() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getCallejeo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCallejeo() == 4) {
+                if (arrayDInteligencia.get(posicion).getCallejeo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getCulturaMagia() < arrayDInteligencia.get(posicion).getCulturaMagia()) {
+            if (Dados.arrayInteligencia.get(posicion).getCulturaMagia() == 0) {
+                if (arrayDInteligencia.get(posicion).getCulturaMagia() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMagia() == 1) {
+                if (arrayDInteligencia.get(posicion).getCulturaMagia() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMagia() == 2) {
+                if (arrayDInteligencia.get(posicion).getCulturaMagia() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMagia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMagia() == 4) {
+                if (arrayDInteligencia.get(posicion).getCulturaMagia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getCulturaMuggle() < arrayDInteligencia.get(posicion).getCulturaMuggle()) {
+            if (Dados.arrayInteligencia.get(posicion).getCulturaMuggle() == 0) {
+                if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 1) {
+                    total = total + 75;
+                }   else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMuggle() == 1) {
+                if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMuggle() == 2) {
+                if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getCulturaMuggle() == 4) {
+                if (arrayDInteligencia.get(posicion).getCulturaMuggle() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getHerbologia() > arrayDInteligencia.get(posicion).getHerbologia()) {
+            if (Dados.arrayInteligencia.get(posicion).getHerbologia() == 0) {
+                if (arrayDInteligencia.get(posicion).getHerbologia() == 1) {
+                    total = total + 75;
+                }  else if (arrayDInteligencia.get(posicion).getHerbologia() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getHerbologia() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getHerbologia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getHerbologia() == 1) {
+                if (arrayDInteligencia.get(posicion).getHerbologia() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getHerbologia() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getHerbologia() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getHerbologia() == 2) {
+                if (arrayDInteligencia.get(posicion).getHerbologia() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getHerbologia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getHerbologia() == 4) {
+                if (arrayDInteligencia.get(posicion).getHerbologia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getMagizoologia() > arrayDInteligencia.get(posicion).getMagizoologia()) {
+            if (Dados.arrayInteligencia.get(posicion).getMagizoologia() == 0) {
+                if (arrayDInteligencia.get(posicion).getMagizoologia() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getMagizoologia() == 1) {
+                if (arrayDInteligencia.get(posicion).getMagizoologia() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 7) {
+                    total = total + 800;
+                }
+            }  else if (Dados.arrayInteligencia.get(posicion).getMagizoologia() == 2) {
+                if (arrayDInteligencia.get(posicion).getMagizoologia() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getMagizoologia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getMagizoologia() == 4) {
+                if (arrayDInteligencia.get(posicion).getMagizoologia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getMedicina() > arrayDInteligencia.get(posicion).getMedicina()) {
+            if (Dados.arrayInteligencia.get(posicion).getMedicina() == 0) {
+                if (arrayDInteligencia.get(posicion).getMedicina() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getMedicina() == 1) {
+                if (arrayDInteligencia.get(posicion).getMedicina() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getMedicina() == 2) {
+                if (arrayDInteligencia.get(posicion).getMedicina() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getMedicina() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getMedicina() == 4) {
+                if (arrayDInteligencia.get(posicion).getMedicina() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getPolitica() > arrayDInteligencia.get(posicion).getPolitica()) {
+            if (Dados.arrayInteligencia.get(posicion).getPolitica() == 0) {
+                if (arrayDInteligencia.get(posicion).getPolitica() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getPolitica() == 1) {
+                if (arrayDInteligencia.get(posicion).getPolitica() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getPolitica() == 2) {
+                if (arrayDInteligencia.get(posicion).getPolitica() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getPolitica() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getPolitica() == 4) {
+                if (arrayDInteligencia.get(posicion).getPolitica() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayInteligencia.get(posicion).getSupervivencia() > arrayDInteligencia.get(posicion).getSupervivencia()) {
+            if (Dados.arrayInteligencia.get(posicion).getSupervivencia() == 0) {
+                if (arrayDInteligencia.get(posicion).getSupervivencia() == 1) {
+                    total = total + 75;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 2) {
+                    total = total + 225;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 4) {
+                    total = total + 475;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getSupervivencia() == 1) {
+                if (arrayDInteligencia.get(posicion).getSupervivencia() == 2) {
+                    total = total + 150;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 4) {
+                    total = total + 400;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getSupervivencia() == 2) {
+                if (arrayDInteligencia.get(posicion).getSupervivencia() == 4) {
+                    total = total + 550;
+                } else if (arrayDInteligencia.get(posicion).getSupervivencia() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayInteligencia.get(posicion).getSupervivencia() == 4) {
+                if (arrayDInteligencia.get(posicion).getSupervivencia() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+    }
+
+    private void calcularDestreza() {
+        if (Dados.arrayDestreza.get(posicion).getDestreza() < arrayDDestreza.get(posicion).getDestreza()) {
+            if (Dados.arrayDestreza.get(posicion).getDestreza() == 0) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 1) {
+                    total = total + 250;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 2) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 3) {
+                    total = total + 950;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 4) {
+                    total = total + 1500;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 5) {
+                    total = total + 2250;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 3250;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 1) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 2) {
+                    total = total + 300;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 3) {
+                    total = total + 700;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 4) {
+                    total = total + 1250;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 5) {
+                    total = total + 2000;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 3000;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 2) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 3) {
+                    total = total + 400;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 4) {
+                    total = total + 950;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 5) {
+                    total = total + 1700;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 2700;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 3) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 4) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 5) {
+                    total = total + 1300;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 2300;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 4) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 5) {
+                    total = total + 750;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 1750;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 5) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 6) {
+                    total = total + 1000;
+                } else if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getDestreza() == 6) {
+                if (arrayDDestreza.get(posicion).getDestreza() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayDestreza.get(posicion).getEsquivar() < arrayDDestreza.get(posicion).getEsquivar()) {
+            if (Dados.arrayDestreza.get(posicion).getEsquivar() == 0 ){
+                if (arrayDDestreza.get(posicion).getEsquivar() == 1) {
+                    total = total + 75;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 2) {
+                    total = total + 225;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 4) {
+                    total = total + 475;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getEsquivar() == 1) {
+                if (arrayDDestreza.get(posicion).getEsquivar() == 2) {
+                    total = total + 150;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 4) {
+                    total = total + 400;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getEsquivar() == 2) {
+                if (arrayDDestreza.get(posicion).getEsquivar() == 4) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getEsquivar() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getEsquivar() == 4) {
+                if (arrayDDestreza.get(posicion).getEsquivar() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayDestreza.get(posicion).getLatrocinio() > arrayDDestreza.get(posicion).getLatrocinio()) {
+            if (Dados.arrayDestreza.get(posicion).getLatrocinio() == 0 ){
+                if (arrayDDestreza.get(posicion).getLatrocinio() == 1) {
+                    total = total + 75;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 2) {
+                    total = total + 225;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 4) {
+                    total = total + 475;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getLatrocinio() == 1) {
+                if (arrayDDestreza.get(posicion).getLatrocinio() == 2) {
+                    total = total + 150;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 4) {
+                    total = total + 400;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getLatrocinio() == 2) {
+                if (arrayDDestreza.get(posicion).getLatrocinio() == 4) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getLatrocinio() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getLatrocinio() == 4) {
+                if (arrayDDestreza.get(posicion).getLatrocinio() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayDestreza.get(posicion).getSigilo() > arrayDDestreza.get(posicion).getSigilo()) {
+            if (Dados.arrayDestreza.get(posicion).getSigilo() == 0 ){
+                if (arrayDDestreza.get(posicion).getSigilo() == 1) {
+                    total = total + 75;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 2) {
+                    total = total + 225;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 4) {
+                    total = total + 475;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getSigilo() == 1) {
+                if (arrayDDestreza.get(posicion).getSigilo() == 2) {
+                    total = total + 150;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 4) {
+                    total = total + 400;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getSigilo() == 2) {
+                if (arrayDDestreza.get(posicion).getSigilo() == 4) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getSigilo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getSigilo() == 4) {
+                if (arrayDDestreza.get(posicion).getSigilo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayDestreza.get(posicion).getVolar() > arrayDDestreza.get(posicion).getVolar()) {
+            if (Dados.arrayDestreza.get(posicion).getVolar() == 0 ){
+                if (arrayDDestreza.get(posicion).getVolar() == 1) {
+                    total = total + 75;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 2) {
+                    total = total + 225;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 4) {
+                    total = total + 475;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getVolar() == 1) {
+                if (arrayDDestreza.get(posicion).getVolar() == 2) {
+                    total = total + 150;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 4) {
+                    total = total + 400;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getVolar() == 2) {
+                if (arrayDDestreza.get(posicion).getVolar() == 4) {
+                    total = total + 550;
+                } else if (arrayDDestreza.get(posicion).getVolar() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayDestreza.get(posicion).getVolar() == 4) {
+                if (arrayDDestreza.get(posicion).getVolar() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+    }
+
+    private void calcularVigor() {
+        if (Dados.arrayVigor.get(posicion).getVigor() < arrayDVigor.get(posicion).getVigor()) {
+            if (Dados.arrayVigor.get(posicion).getVigor() == 0) {
+                if (arrayDVigor.get(posicion).getVigor() == 1) {
+                    total = total + 250;
+                } else if (arrayDVigor.get(posicion).getVigor() == 2) {
+                    total = total + 550;
+                } else if (arrayDVigor.get(posicion).getVigor() == 3) {
+                    total = total + 950;
+                } else if (arrayDVigor.get(posicion).getVigor() == 4) {
+                    total = total + 1500;
+                } else if (arrayDVigor.get(posicion).getVigor() == 5) {
+                    total = total + 2250;
+                } else if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 3250;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 4550;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 1) {
+                if (arrayDVigor.get(posicion).getVigor() == 2) {
+                    total = total + 300;
+                } else if (arrayDVigor.get(posicion).getVigor() == 3) {
+                    total = total + 700;
+                } else if (arrayDVigor.get(posicion).getVigor() == 4) {
+                    total = total + 1250;
+                } else if (arrayDVigor.get(posicion).getVigor() == 5) {
+                    total = total + 2000;
+                } else if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 3000;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 4300;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 2) {
+                if (arrayDVigor.get(posicion).getVigor() == 3) {
+                    total = total + 400;
+                } else if (arrayDVigor.get(posicion).getVigor() == 4) {
+                    total = total + 950;
+                } else if (arrayDVigor.get(posicion).getVigor() == 5) {
+                    total = total + 1700;
+                } else if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 2700;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 4000;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 3) {
+                if (arrayDVigor.get(posicion).getVigor() == 4) {
+                    total = total + 550;
+                } else if (arrayDVigor.get(posicion).getVigor() == 5) {
+                    total = total + 1300;
+                } else if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 2300;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 3600;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 4) {
+                if (arrayDVigor.get(posicion).getVigor() == 5) {
+                    total = total + 750;
+                } else if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 1750;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 3050;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 5) {
+                if (arrayDVigor.get(posicion).getVigor() == 6) {
+                    total = total + 1000;
+                } else if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 2300;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getVigor() == 6) {
+                if (arrayDVigor.get(posicion).getVigor() == 7) {
+                    total = total + 1600;
+                }
+            }
+        }
+
+        if (Dados.arrayVigor.get(posicion).getAtletismo() < arrayDVigor.get(posicion).getAtletismo()) {
+            if (Dados.arrayVigor.get(posicion).getAtletismo() == 0) {
+                if (arrayDVigor.get(posicion).getAtletismo() == 1) {
+                    total = total + 75;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 2) {
+                    total = total + 225;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 4) {
+                    total = total + 475;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getAtletismo() == 1) {
+                if (arrayDVigor.get(posicion).getAtletismo() == 2) {
+                    total = total + 150;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 4) {
+                    total = total + 400;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getAtletismo() == 2) {
+                if (arrayDVigor.get(posicion).getAtletismo() == 4) {
+                    total = total + 550;
+                } else if (arrayDVigor.get(posicion).getAtletismo() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getAtletismo() == 4) {
+                if (arrayDVigor.get(posicion).getAtletismo() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
+
+        if (Dados.arrayVigor.get(posicion).getPelea() < arrayDVigor.get(posicion).getPelea()) {
+            if (Dados.arrayVigor.get(posicion).getPelea() == 0) {
+                if (arrayDVigor.get(posicion).getPelea() == 1) {
+                    total = total + 75;
+                } else if (arrayDVigor.get(posicion).getPelea() == 2) {
+                    total = total + 225;
+                } else if (arrayDVigor.get(posicion).getPelea() == 4) {
+                    total = total + 475;
+                } else if (arrayDVigor.get(posicion).getPelea() == 7) {
+                    total = total + 875;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getPelea() == 1) {
+                if (arrayDVigor.get(posicion).getPelea() == 2) {
+                    total = total + 150;
+                } else if (arrayDVigor.get(posicion).getPelea() == 4) {
+                    total = total + 400;
+                } else if (arrayDVigor.get(posicion).getPelea() == 7) {
+                    total = total + 800;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getPelea() == 2) {
+                if (arrayDVigor.get(posicion).getPelea() == 4) {
+                    total = total + 550;
+                } else if (arrayDVigor.get(posicion).getPelea() == 7) {
+                    total = total + 650;
+                }
+            } else if (Dados.arrayVigor.get(posicion).getPelea() == 4) {
+                if (arrayDVigor.get(posicion).getPelea() == 7) {
+                    total = total + 400;
+                }
+            }
+        }
     }
 
     private void rellenarArrays() {
@@ -580,6 +2159,7 @@ public class Calculadora extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Datos deseados insertados correctamente.", Toast.LENGTH_LONG).show();
         }
         db.close();
+        rellenarArrays();
     }
 
     public void update(){
@@ -587,8 +2167,8 @@ public class Calculadora extends AppCompatActivity {
         SQLiteDatabase db2 = dbHelper2.getWritableDatabase();
         //actualizar vigor
         int updateVigor = Integer.parseInt(vigor.getSelectedItem().toString());
-        int updateAtle = build.metodoConversorHabilidad(atletismo.getSelectedItem().toString());
-        int updatePelea = build.metodoConversorHabilidad(pelea.getSelectedItem().toString());
+        int updateAtle = metodoConversorHabilidadD(atletismo.getSelectedItem().toString());
+        int updatePelea = metodoConversorHabilidadD(pelea.getSelectedItem().toString());
 
         ContentValues registro = new ContentValues();
         registro.put("vigor", updateVigor);
@@ -599,10 +2179,10 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar destreza
         int updatedex = Integer.parseInt(destreza.getSelectedItem().toString());
-        int updateesq = build.metodoConversorHabilidad(esquivar.getSelectedItem().toString());
-        int updatelatrocinio = build.metodoConversorHabilidad(latrocinio.getSelectedItem().toString());
-        int updatesigilo = build.metodoConversorHabilidad(sigilo.getSelectedItem().toString());
-        int updatevolar= build.metodoConversorHabilidad(volar.getSelectedItem().toString());
+        int updateesq = metodoConversorHabilidadD(esquivar.getSelectedItem().toString());
+        int updatelatrocinio = metodoConversorHabilidadD(latrocinio.getSelectedItem().toString());
+        int updatesigilo = metodoConversorHabilidadD(sigilo.getSelectedItem().toString());
+        int updatevolar= metodoConversorHabilidadD(volar.getSelectedItem().toString());
 
         ContentValues registro2 = new ContentValues();
         registro2.put("destreza", updatedex);
@@ -615,11 +2195,11 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar carisma
         int updatecar = Integer.parseInt(carisma.getSelectedItem().toString());
-        int updatecoor= build.metodoConversorHabilidad(coordinacion.getSelectedItem().toString());
-        int updateint = build.metodoConversorHabilidad(intimidacion.getSelectedItem().toString());
-        int updateora = build.metodoConversorHabilidad(oratoria.getSelectedItem().toString());
-        int updateseducir = build.metodoConversorHabilidad(seducir.getSelectedItem().toString());
-        int updatesubt = build.metodoConversorHabilidad(subterfugio.getSelectedItem().toString());
+        int updatecoor= metodoConversorHabilidadD(coordinacion.getSelectedItem().toString());
+        int updateint = metodoConversorHabilidadD(intimidacion.getSelectedItem().toString());
+        int updateora = metodoConversorHabilidadD(oratoria.getSelectedItem().toString());
+        int updateseducir = metodoConversorHabilidadD(seducir.getSelectedItem().toString());
+        int updatesubt = metodoConversorHabilidadD(subterfugio.getSelectedItem().toString());
 
         ContentValues registro3 = new ContentValues();
         registro3.put("carisma", updatecar);
@@ -633,9 +2213,9 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar poder
         int updatepoder = Integer.parseInt(poder.getSelectedItem().toString());
-        int updateduelo= build.metodoConversorHabilidad(duelo.getSelectedItem().toString());
-        int updatepociones = build.metodoConversorHabilidad(pociones.getSelectedItem().toString());
-        int updaterituales = build.metodoConversorHabilidad(rituales.getSelectedItem().toString());
+        int updateduelo= metodoConversorHabilidadD(duelo.getSelectedItem().toString());
+        int updatepociones = metodoConversorHabilidadD(pociones.getSelectedItem().toString());
+        int updaterituales = metodoConversorHabilidadD(rituales.getSelectedItem().toString());
 
         ContentValues registro4 = new ContentValues();
         registro4.put("poder", updatepoder);
@@ -647,9 +2227,9 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar voluntad
         int updatevol = Integer.parseInt(voluntad.getSelectedItem().toString());
-        int updatearte = build.metodoConversorHabilidad(arte.getSelectedItem().toString());
-        int updateestilo = build.metodoConversorHabilidad(estilo.getSelectedItem().toString());
-        int updatefrialdad = build.metodoConversorHabilidad(frialdad.getSelectedItem().toString());
+        int updatearte = metodoConversorHabilidadD(arte.getSelectedItem().toString());
+        int updateestilo = metodoConversorHabilidadD(estilo.getSelectedItem().toString());
+        int updatefrialdad = metodoConversorHabilidadD(frialdad.getSelectedItem().toString());
 
         ContentValues registro5 = new ContentValues();
         registro5.put("voluntad", updatevol);
@@ -661,11 +2241,11 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar percecpción
         int updateper = Integer.parseInt(percepcion.getSelectedItem().toString());
-        int updatealerta = build.metodoConversorHabilidad(alerta.getSelectedItem().toString());
-        int updateConsciencia = build.metodoConversorHabilidad(consciencia.getSelectedItem().toString());
-        int updateEmpatia = build.metodoConversorHabilidad(empatia.getSelectedItem().toString());
-        int updateiniciativa = build.metodoConversorHabilidad(iniciativa.getSelectedItem().toString());
-        int updateInvestigacion = build.metodoConversorHabilidad(investigacion.getSelectedItem().toString());
+        int updatealerta = metodoConversorHabilidadD(alerta.getSelectedItem().toString());
+        int updateConsciencia = metodoConversorHabilidadD(consciencia.getSelectedItem().toString());
+        int updateEmpatia = metodoConversorHabilidadD(empatia.getSelectedItem().toString());
+        int updateiniciativa = metodoConversorHabilidadD(iniciativa.getSelectedItem().toString());
+        int updateInvestigacion = metodoConversorHabilidadD(investigacion.getSelectedItem().toString());
 
         ContentValues registro6 = new ContentValues();
         registro6.put("percepcion", updateper);
@@ -679,16 +2259,16 @@ public class Calculadora extends AppCompatActivity {
 
         //actualizar inteligencia
         int updateinte = Integer.parseInt(inteligencia.getSelectedItem().toString());
-        int updateAdivina = build.metodoConversorHabilidad(adivinacion.getSelectedItem().toString());
-        int updatearcanismo = build.metodoConversorHabilidad(arcanismo.getSelectedItem().toString());
-        int updateCallejeo = build.metodoConversorHabilidad(callejeo.getSelectedItem().toString());
-        int updateculturaMagia = build.metodoConversorHabilidad(culturaM.getSelectedItem().toString());
-        int updateculturaMuggle = build.metodoConversorHabilidad(culturaMu.getSelectedItem().toString());
-        int updateHerbologia = build.metodoConversorHabilidad(herbologia.getSelectedItem().toString());
-        int updateMagZoo = build.metodoConversorHabilidad(magizoologia.getSelectedItem().toString());
-        int updateMedicina = build.metodoConversorHabilidad(medicina.getSelectedItem().toString());
-        int updatePolitica = build.metodoConversorHabilidad(politica.getSelectedItem().toString());
-        int updateSupervivencia = build.metodoConversorHabilidad(supervivencia.getSelectedItem().toString());
+        int updateAdivina = metodoConversorHabilidadD(adivinacion.getSelectedItem().toString());
+        int updatearcanismo = metodoConversorHabilidadD(arcanismo.getSelectedItem().toString());
+        int updateCallejeo = metodoConversorHabilidadD(callejeo.getSelectedItem().toString());
+        int updateculturaMagia = metodoConversorHabilidadD(culturaM.getSelectedItem().toString());
+        int updateculturaMuggle =metodoConversorHabilidadD(culturaMu.getSelectedItem().toString());
+        int updateHerbologia = metodoConversorHabilidadD(herbologia.getSelectedItem().toString());
+        int updateMagZoo = metodoConversorHabilidadD(magizoologia.getSelectedItem().toString());
+        int updateMedicina = metodoConversorHabilidadD(medicina.getSelectedItem().toString());
+        int updatePolitica = metodoConversorHabilidadD(politica.getSelectedItem().toString());
+        int updateSupervivencia = metodoConversorHabilidadD(supervivencia.getSelectedItem().toString());
 
         ContentValues registro7 = new ContentValues();
         registro7.put("inteligencia", updateinte);
@@ -712,6 +2292,7 @@ public class Calculadora extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error: deseos no actualizados", Toast.LENGTH_LONG).show();
         }
+        rellenarArrays();
     }
 
     public int metodoConversorHabilidadD (String datoSpinner) {
