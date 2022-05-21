@@ -1,23 +1,18 @@
 package com.example.fororol;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.ContentValues;
-import android.content.ContextParams;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.fororol.db.DbHelper;
-import com.example.fororol.modelo.Vigor;
-
-import java.util.ArrayList;
 
 public class Build extends AppCompatActivity {
     private Spinner vigor, poder, destreza, carisma, voluntad, percepcion, inteligencia;
@@ -37,6 +32,7 @@ public class Build extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_build);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -161,7 +157,6 @@ public class Build extends AppCompatActivity {
         fila = db.rawQuery("SELECT * FROM '"+DbHelper.TABLE_PJ+"' WHERE idpj= '"+ idEscogido+" '", null);
         if (fila.moveToFirst()) {
             etapa.setSelection(reversoEtapa(fila.getString(2)));
-            //System.out.println("Etapa------------------------>" +reversoEtapa(fila.getString(2)));
         }
         db.close();
 

@@ -5,52 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/fondointro"
+    android:background="@drawable/fondo2"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="600px"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="cursive"
-        android:text="Bienvenides a la gestión del pj del foro de rol HP Avada Kevrada"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="40sp" />
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal" >
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mas"
+            android:adjustViewBounds="true"/>
+        <Button
+            android:id="@+id/bAnhadir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Añadir pj" />
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mas"
+            android:adjustViewBounds="true"/>
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+    <ImageView
+        android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/seleccion"
+            android:adjustViewBounds="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bEscoger"
+        android:text="Escoger pj"/>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/seleccion2"
+            android:adjustViewBounds="true"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete"
+            android:adjustViewBounds="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bborrar"
+        android:text="Borrar pj" />
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete"
+            android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="100dp"
+       android:text="holaaaaaaaaaaaaaaaa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:textSize="30sp"
         android:textColor="@color/white"
         android:id="@+id/tvpjEscogido"/>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_margin="20dp"
-    android:layout_gravity="center">
-    <Button
-        android:layout_marginRight="15dp"
-        android:id="@+id/bAnhadir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Añadir pj" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bEscoger"
-        android:text="Escoger pj"/>
-</LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bborrar"
-        android:text="Borrar pj" />
 
 
 </LinearLayout>

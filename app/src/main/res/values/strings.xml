@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ForoRol</string>
+    <string name="app_name">GestorHPAK</string>
     <array name="destrezas">
         <item>"0"</item>
         <item>"1"</item>

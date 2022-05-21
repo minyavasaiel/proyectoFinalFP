@@ -2,6 +2,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/crema"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -51,7 +52,7 @@
         android:layout_rowSpan="4"/>
 
     <Spinner
-        android:id="@+id/destreza"
+        android:id="@+id/destrezad"
         android:layout_rowSpan="4"
         android:entries="@array/destrezas" />
 
@@ -61,7 +62,7 @@
         android:text="Esquivar" />
 
     <Spinner
-        android:id="@+id/esquivar"
+        android:id="@+id/esquivard"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -70,7 +71,7 @@
         android:text="Latrocinio" />
 
     <Spinner
-        android:id="@+id/latrocinio"
+        android:id="@+id/latrociniod"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -79,7 +80,7 @@
         android:text="Sigilo" />
 
     <Spinner
-        android:id="@+id/sigilo"
+        android:id="@+id/sigilod"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -88,7 +89,7 @@
         android:text="Volar" />
 
     <Spinner
-        android:id="@+id/volar"
+        android:id="@+id/volard"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -98,7 +99,7 @@
         android:text="Carisma" />
 
     <Spinner
-        android:id="@+id/carisma"
+        android:id="@+id/carismad"
         android:layout_rowSpan="5"
         android:entries="@array/destrezas" />
 
@@ -108,7 +109,7 @@
         android:text="Coordinación" />
 
     <Spinner
-        android:id="@+id/coordinacion"
+        android:id="@+id/coordinaciond"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -117,7 +118,7 @@
         android:text="Intimidación" />
 
     <Spinner
-        android:id="@+id/intimidacion"
+        android:id="@+id/intimidaciond"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -126,7 +127,7 @@
         android:text="Oratoria" />
 
     <Spinner
-        android:id="@+id/oratoria"
+        android:id="@+id/oratoriad"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -135,7 +136,7 @@
         android:text="Seducir" />
 
     <Spinner
-        android:id="@+id/seducir"
+        android:id="@+id/seducird"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -144,7 +145,7 @@
         android:text="Subterfugio" />
 
     <Spinner
-        android:id="@+id/subterfugio"
+        android:id="@+id/subterfugiod"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -154,7 +155,7 @@
         android:text="Poder" />
 
     <Spinner
-        android:id="@+id/poder"
+        android:id="@+id/poderd"
         android:layout_rowSpan="3"
         android:entries="@array/destrezas"/>
 
@@ -164,7 +165,7 @@
         android:text="Duelo" />
 
     <Spinner
-        android:id="@+id/duelo"
+        android:id="@+id/duelod"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -173,7 +174,7 @@
         android:text="Pociones" />
 
     <Spinner
-        android:id="@+id/pociones"
+        android:id="@+id/pocionesd"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -182,7 +183,7 @@
         android:text="Rituales" />
 
     <Spinner
-        android:id="@+id/rituales"
+        android:id="@+id/ritualesd"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -192,7 +193,7 @@
         android:layout_rowSpan="3"/>
 
     <Spinner
-        android:id="@+id/voluntad"
+        android:id="@+id/voluntadd"
         android:layout_rowSpan="3"
         android:entries="@array/destrezas" />
 
@@ -202,7 +203,7 @@
         android:text="Arte/Artesanía" />
 
     <Spinner
-        android:id="@+id/arte"
+        android:id="@+id/arted"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -211,7 +212,7 @@
         android:text="Estilo" />
 
     <Spinner
-        android:id="@+id/estilo"
+        android:id="@+id/estilod"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -220,7 +221,7 @@
         android:text="Frialdad" />
 
     <Spinner
-        android:id="@+id/frialdad"
+        android:id="@+id/frialdadd"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -230,7 +231,7 @@
         android:text="Percepción" />
 
     <Spinner
-        android:id="@+id/percepcion"
+        android:id="@+id/percepciond"
         android:layout_rowSpan="5"
         android:entries="@array/destrezas" />
 
@@ -241,7 +242,7 @@
         android:text="Alerta" />
 
     <Spinner
-        android:id="@+id/alerta"
+        android:id="@+id/alertad"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -250,7 +251,7 @@
         android:text="Consciencia" />
 
     <Spinner
-        android:id="@+id/consciencia"
+        android:id="@+id/conscienciad"
         android:entries="@array/habilidades" />
 
     <TextView
@@ -259,7 +260,7 @@
         android:text="Empatía" />
 
     <Spinner
-        android:id="@+id/empatia"
+        android:id="@+id/empatiad"
         android:entries="@array/habilidades"></Spinner>
 
     <TextView
@@ -268,7 +269,7 @@
         android:text="Iniciativa" />
 
     <Spinner
-        android:id="@+id/iniciativa"
+        android:id="@+id/iniciativad"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -277,7 +278,7 @@
         android:text="Investigación" />
 
     <Spinner
-        android:id="@+id/investigacion"
+        android:id="@+id/investigaciond"
         android:entries="@array/habilidades"/>
 
 
@@ -288,7 +289,7 @@
         android:layout_rowSpan="10"/>
     <Spinner
         android:layout_rowSpan="10"
-        android:id="@+id/inteligencia"
+        android:id="@+id/inteligenciad"
         android:entries="@array/destrezas"/>
 
     <TextView
@@ -297,7 +298,7 @@
         android:text="Adivinación" />
 
     <Spinner
-        android:id="@+id/adivinacion"
+        android:id="@+id/adivinaciond"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -306,7 +307,7 @@
         android:text="Arcanismo" />
 
     <Spinner
-        android:id="@+id/arcanismo"
+        android:id="@+id/arcanismod"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -315,7 +316,7 @@
         android:text="Callejeo" />
 
     <Spinner
-        android:id="@+id/callejeo"
+        android:id="@+id/callejeod"
         android:entries="@array/habilidades"/>
     <TextView
         android:layout_width="wrap_content"
@@ -323,7 +324,7 @@
         android:text="Cultura Mágica" />
 
     <Spinner
-        android:id="@+id/culturaMag"
+        android:id="@+id/culturaMagd"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -332,7 +333,7 @@
         android:text="Cultura Muggle" />
 
     <Spinner
-        android:id="@+id/culturaMug"
+        android:id="@+id/culturaMugd"
         android:entries="@array/habilidades"/>
     <TextView
         android:layout_width="wrap_content"
@@ -340,7 +341,7 @@
         android:text="Herbología" />
 
     <Spinner
-        android:id="@+id/herbologia"
+        android:id="@+id/herbologiad"
         android:entries="@array/habilidades"/>
     <TextView
         android:layout_width="wrap_content"
@@ -348,7 +349,7 @@
         android:text="Magizoología" />
 
     <Spinner
-        android:id="@+id/magizoologia"
+        android:id="@+id/magizoologiad"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -357,7 +358,7 @@
         android:text="Medicina" />
 
     <Spinner
-        android:id="@+id/medicina"
+        android:id="@+id/medicinad"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -366,7 +367,7 @@
         android:text="Política" />
 
     <Spinner
-        android:id="@+id/politica"
+        android:id="@+id/politicad"
         android:entries="@array/habilidades"/>
 
     <TextView
@@ -375,7 +376,7 @@
         android:text="Supervivencia" />
 
     <Spinner
-        android:id="@+id/supervivencia"
+        android:id="@+id/supervivenciad"
         android:entries="@array/habilidades"/>
 
     <Button
