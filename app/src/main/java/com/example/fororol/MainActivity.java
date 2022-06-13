@@ -106,6 +106,13 @@ public class MainActivity extends AppCompatActivity {
                     int cantidad6 = db.delete(DbHelper.TABLE_PERCEPCION, "idpe ="+ Build.idEscogido, null);
                     int cantidad7 = db.delete(DbHelper.TABLE_PODER, "idp ="+ Build.idEscogido, null);
                     int cantidad8 = db.delete(DbHelper.TABLE_VOLUNTAD, "idvo ="+ Build.idEscogido, null);
+                    int cantidad9 = db.delete(DbHelper.TABLE_DEXD, "iddd ="+ Build.idEscogido, null);
+                    int cantidad10 = db.delete(DbHelper.TABLE_CARISMAD, "idcd ="+ Build.idEscogido, null);
+                    int cantidad11 = db.delete(DbHelper.TABLE_INTELIGENCIAD, "idid ="+ Build.idEscogido, null);
+                    int cantidad12 = db.delete(DbHelper.TABLE_VIGORD, "idvd ="+ Build.idEscogido, null);
+                    int cantidad13 = db.delete(DbHelper.TABLE_PERCEPCIOND, "idped ="+ Build.idEscogido, null);
+                    int cantidad14 = db.delete(DbHelper.TABLE_PODERD, "idpd ="+ Build.idEscogido, null);
+                    int cantidad15 = db.delete(DbHelper.TABLE_VOLUNTADD, "idvod ="+ Build.idEscogido, null);
                     db.close();
                 }
                 Build.idEscogido = 0;

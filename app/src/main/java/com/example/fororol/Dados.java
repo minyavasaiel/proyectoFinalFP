@@ -33,7 +33,7 @@ public class Dados extends AppCompatActivity {
     public static ArrayList<Percepcion> arrayPercepcion = new ArrayList<>();
     public static ArrayList<Poder> arrayPoder = new ArrayList<>();
     public static ArrayList<Voluntad> arrayVoluntad = new ArrayList<>();
-    private boolean carisma = false, destreza = false, vigor = false, inteligencia = false, percepcion = false, poder = false, voluntad = false;
+    private boolean carisma = false, destreza = false, vigor = false, inteligencia = false, percepcion = false, poder = false, voluntad = false, etapa= false;
     private int posicion = 0;
     Button boton;
     TextView tvHeridas, tviniciativa, tvataqueMagico, tvataqueFisico, tvdefensa, tvmovimiento, tvcarrera, tvPAs, tvUmbralHeridas;
@@ -65,6 +65,7 @@ public class Dados extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rellenarArrays();
+        comprobarBoton();
 
         //conseguir la posición del pj en arrays
         for (int i=0; i<MainActivity.pjs.size(); i++){
@@ -72,8 +73,7 @@ public class Dados extends AppCompatActivity {
                 posicion = i;
             }
         }
-        if (carisma && destreza && vigor && inteligencia && percepcion && poder && voluntad) {
-            boton.setEnabled(true);
+        if ( poder && voluntad) {
             //atletismo
             int atletismo= arrayVigor.get(posicion).getAtletismo();
             tvmovimiento.setText("Movimento; Vigor: "+arrayVigor.get(posicion).getVigor()+" + Atletismo: "+atletismo+"= "+(arrayVigor.get(posicion).getVigor()+atletismo)+" m.");
@@ -128,6 +128,43 @@ public class Dados extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void comprobarBoton() {
+        for (int i = 0; i < arrayPoder.size(); i++) {
+            if (arrayPoder.get(i).getIdp() == Build.idEscogido) {
+                poder = true;
+            }
+        }
+
+        for (int i = 0; i < arrayDestreza.size(); i++) {
+            if (arrayDestreza.get(i).getIdd() == Build.idEscogido) {
+                destreza = true;
+            }
+        }
+
+        for (int i = 0; i < arrayVoluntad.size(); i++) {
+            if (arrayVoluntad.get(i).getIdvo() == Build.idEscogido) {
+                voluntad = true;
+            }
+        }
+
+
+        if (umbralHeridas(MainActivity.pjs.get(posicion).getEtapa())==0) {
+            Toast.makeText(this, "No has guardado la etapa de pj.", Toast.LENGTH_SHORT).show();
+            boton.setEnabled(false);
+            etapa = false;
+        } else {
+            etapa = true;
+        }
+
+        if (voluntad && poder && destreza && etapa) {
+            Toast.makeText(this, "Datos cargados correctamente.", Toast.LENGTH_LONG).show();
+            boton.setEnabled(true);
+        } else {
+            Toast.makeText(this, "No tienes la build guardada.", Toast.LENGTH_LONG).show();
+            boton.setEnabled(false);
+        }
     }
 
     private int paBase(String etapa) {
@@ -199,9 +236,6 @@ public class Dados extends AppCompatActivity {
                 Carisma carismaObjeto = new Carisma(id, carisma, coordinacion, intimidacion, oratoria, seducir, subterfugio);
                 arrayCarisma.add(carismaObjeto);
             } while (cursor.moveToNext());
-            carisma=true;
-        } else {
-            Toast.makeText(this, "No hay carisma", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Destreza
         arrayDestreza.clear();
@@ -217,9 +251,6 @@ public class Dados extends AppCompatActivity {
                 Destreza destrezaObjeto = new Destreza(id, dex, esquivar, latrocinio, sigilo, volar);
                 arrayDestreza.add(destrezaObjeto);
             } while (cursor1.moveToNext());
-            destreza=true;
-        } else {
-            Toast.makeText(this, "No hay destreza", Toast.LENGTH_LONG).show();
         }
 
         //meter en modelo Vigor
@@ -234,9 +265,6 @@ public class Dados extends AppCompatActivity {
                 Vigor vigorObjeto = new Vigor(id, vigor, atletismo, pelea);
                 arrayVigor.add(vigorObjeto);
             } while (cursor2.moveToNext());
-            vigor=true;
-        } else {
-            Toast.makeText(this, "No hay vigor", Toast.LENGTH_LONG).show();
         }
 
         //meter en modelo Inteligencia
@@ -259,9 +287,6 @@ public class Dados extends AppCompatActivity {
                 Inteligencia inteligenciaObjeto = new Inteligencia(id, inteligencia, adivinacion, arcanismo, callejeo, culturaMagica, culturaMuggle, herbologia, magizoologia, medicina, politica, supervivencia);
                 arrayInteligencia.add(inteligenciaObjeto);
             } while (cursor3.moveToNext());
-            inteligencia=true;
-        } else {
-            Toast.makeText(this, "No hay inteligencia", Toast.LENGTH_LONG).show();
         }
 
         //meter en modelo Percepcion
@@ -279,9 +304,6 @@ public class Dados extends AppCompatActivity {
                 Percepcion percepcionObjeto = new Percepcion(id, percepcion, alerta, conciencia, empatia, iniciativa, investigacion);
                 arrayPercepcion.add(percepcionObjeto);
             } while (cursor4.moveToNext());
-            percepcion=true;
-        } else {
-            Toast.makeText(this, "No hay percepcion", Toast.LENGTH_LONG).show();
         }
 
         //meter en modelo Poder
@@ -297,9 +319,6 @@ public class Dados extends AppCompatActivity {
                 Poder poderObjeto = new Poder(id, poder, duelo, pocion, ritual);
                 arrayPoder.add(poderObjeto);
             } while (cursor5.moveToNext());
-            poder=true;
-        } else {
-            Toast.makeText(this, "No hay poder", Toast.LENGTH_LONG).show();
         }
 
         //meter modelo Voluntad
@@ -315,9 +334,6 @@ public class Dados extends AppCompatActivity {
                 Voluntad voluntadObjeto = new Voluntad(id, voluntad, arte, estilo, frialdad);
                 arrayVoluntad.add(voluntadObjeto);
             } while (cursor6.moveToNext());
-            voluntad=true;
-        } else {
-            Toast.makeText(this, "No hay voluntad", Toast.LENGTH_LONG).show();
         }
     }
 }

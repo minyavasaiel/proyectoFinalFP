@@ -210,7 +210,7 @@ public class Calculadora extends AppCompatActivity {
             resultado.setText(" " + total);
             }
         });
-
+        comprobarBotones();
 
     }
 
@@ -1652,7 +1652,6 @@ public class Calculadora extends AppCompatActivity {
             } else if (Dados.arrayVigor.get(posicion).getVigor() == 1) {
                 if (arrayDVigor.get(posicion).getVigor() == 2) {
                     total = total + 300;
-                    System.out.print("Entra por aquí....................................");
                 } else if (arrayDVigor.get(posicion).getVigor() == 3) {
                     total = total + 700;
                 } else if (arrayDVigor.get(posicion).getVigor() == 4) {
@@ -1789,9 +1788,10 @@ public class Calculadora extends AppCompatActivity {
                 Carisma carismaObjeto = new Carisma(id, carisma, coordinacion, intimidacion, oratoria, seducir, subterfugio);
                 arrayDCarisma.add(carismaObjeto);
             } while (cursor.moveToNext());
-            carismaCD = true;
+           // carismaCD = true;
         } else {
-            Toast.makeText(this, "No hay carisma en deseos.", Toast.LENGTH_LONG).show();
+           // carismaCD = false;
+           //Toast.makeText(this, "No hay carisma en deseos.", Toast.LENGTH_LONG).show();
         }
 
         arrayDDestreza.clear();
@@ -1807,9 +1807,10 @@ public class Calculadora extends AppCompatActivity {
                 Destreza destrezaObjeto = new Destreza(id, dex, esquivar, latrocinio, sigilo, volar);
                 arrayDDestreza.add(destrezaObjeto);
             } while (cursor1.moveToNext());
-            destrezaCD = true;
+            //destrezaCD = true;
         } else {
-            Toast.makeText(this, "No hay destreza en deseos.", Toast.LENGTH_LONG).show();
+            //destrezaCD = false;
+           //Toast.makeText(this, "No hay destreza en deseos.", Toast.LENGTH_LONG).show();
         }
 
         arrayDVigor.clear();
@@ -1823,9 +1824,10 @@ public class Calculadora extends AppCompatActivity {
                 Vigor vigorObjeto = new Vigor(id, vigor, atletismo, pelea);
                 arrayDVigor.add(vigorObjeto);
             } while (cursor2.moveToNext());
-            vigorCD = true;
+           // vigorCD = true;
         } else {
-            Toast.makeText(this, "No hay vigor deseado.", Toast.LENGTH_LONG).show();
+          //  vigorCD = false;
+            //Toast.makeText(this, "No hay vigor deseado.", Toast.LENGTH_LONG).show();
         }
 
         arrayDInteligencia.clear();
@@ -1847,9 +1849,10 @@ public class Calculadora extends AppCompatActivity {
                 Inteligencia inteligenciaObjeto = new Inteligencia(id, inteligencia, adivinacion, arcanismo, callejeo, culturaMagica, culturaMuggle, herbologia, magizoologia, medicina, politica, supervivencia);
                 arrayDInteligencia.add(inteligenciaObjeto);
             } while (cursor3.moveToNext());
-            inteligenciaCD = true;
+          // inteligenciaCD = true;
         } else {
-            Toast.makeText(this, "No hay inteligencia deseada.", Toast.LENGTH_LONG).show();
+           // inteligenciaCD = false;
+            //Toast.makeText(this, "No hay inteligencia deseada.", Toast.LENGTH_LONG).show();
         }
 
         arrayDPercepcion.clear();
@@ -1866,9 +1869,10 @@ public class Calculadora extends AppCompatActivity {
                 Percepcion percepcionObjeto = new Percepcion(id, percepcion, alerta, conciencia, empatia, iniciativa, investigacion);
                 arrayDPercepcion.add(percepcionObjeto);
             } while (cursor4.moveToNext());
-            percepcionCD = true;
+            //percepcionCD = true;
         } else {
-            Toast.makeText(this, "No hay percepción en deseos.", Toast.LENGTH_LONG).show();
+           // percepcionCD = false;
+           //Toast.makeText(this, "No hay percepción en deseos.", Toast.LENGTH_LONG).show();
         }
 
         arrayDPoder.clear();
@@ -1883,9 +1887,8 @@ public class Calculadora extends AppCompatActivity {
                 Poder poderObjeto = new Poder(id, poder, duelo, pocion, ritual);
                 arrayDPoder.add(poderObjeto);
             } while (cursor5.moveToNext());
-            poderCD = true;
         } else {
-            Toast.makeText(this, "No hay poder deseado.", Toast.LENGTH_LONG).show();
+           poderCD = false;
         }
 
         arrayDVoluntad.clear();
@@ -1900,15 +1903,26 @@ public class Calculadora extends AppCompatActivity {
                 Voluntad voluntadObjeto = new Voluntad(id, voluntad, arte, estilo, frialdad);
                 arrayDVoluntad.add(voluntadObjeto);
             } while (cursor6.moveToNext());
-            voluntadCD = true;
         } else {
-            Toast.makeText(this, "No hay voluntad deseada.", Toast.LENGTH_LONG).show();
+            voluntadCD = false;
         }
 
-        if (poderCD && voluntadCD && inteligenciaCD && destrezaCD && carismaCD && percepcionCD && vigorCD) {
-            Toast.makeText(this, "Deseos guardados", Toast.LENGTH_LONG).show();
+        for (int i = 0; i < arrayDPoder.size(); i++) {
+            if (arrayDPoder.get(i).getIdp() == Build.idEscogido) {
+                poderCD = true;
+            }
+        }
+
+        for (int i = 0; i < arrayDDestreza.size(); i++) {
+            if (arrayDDestreza.get(i).getIdd() == Build.idEscogido) {
+                voluntadCD = true;
+            }
+        }
+
+        if (voluntadCD && poderCD)  {
+            Toast.makeText(this, "Deseos cargados correctamente.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "No se guardaron los deseos.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes deseos guardados.", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -1947,7 +1961,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor.moveToNext());
             carismaC = true;
         } else {
-            Toast.makeText(this, "No hay carisma", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-carisma", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Destreza
         Dados.arrayDestreza.clear();
@@ -1965,7 +1979,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor1.moveToNext());
             destrezaC = true;
         } else {
-            Toast.makeText(this, "No hay destreza", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-destreza", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Vigor
         Dados.arrayVigor.clear();
@@ -1981,7 +1995,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor2.moveToNext());
             vigorC = true;
         } else {
-            Toast.makeText(this, "No hay vigor", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-vigor", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Inteligencia
         Dados.arrayInteligencia.clear();
@@ -2005,7 +2019,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor3.moveToNext());
             inteligenciaC = true;
         } else {
-            Toast.makeText(this, "No hay inteligencia", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-inteligencia", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Percepcion
         Dados.arrayPercepcion.clear();
@@ -2024,7 +2038,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor4.moveToNext());
             percepcionC = true;
         } else {
-            Toast.makeText(this, "No hay percepcion", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-percepcion", Toast.LENGTH_LONG).show();
         }
         //meter en modelo Poder
         Dados.arrayPoder.clear();
@@ -2041,7 +2055,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor5.moveToNext());
             poderC = true;
         } else {
-            Toast.makeText(this, "No hay poder", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-poder", Toast.LENGTH_LONG).show();
         }
         //meter modelo Voluntad
         Dados.arrayVoluntad.clear();
@@ -2058,7 +2072,7 @@ public class Calculadora extends AppCompatActivity {
             } while (cursor6.moveToNext());
             voluntadC = true;
         } else {
-            Toast.makeText(this, "No hay voluntad", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "No tienes datos en build-voluntad. Guarda tu build de pj.", Toast.LENGTH_LONG).show();
         }
 
         if (poderC && voluntadC && inteligenciaC && destrezaC && carismaC && percepcionC && vigorC) {
@@ -2334,6 +2348,17 @@ public class Calculadora extends AppCompatActivity {
         } else{
             return -1;
         }
+    }
+
+    private void comprobarBotones() {
+
+            if (arrayDVigor.isEmpty()) {
+              bcalcular.setEnabled(false);
+            } else {
+                bcalcular.setEnabled(true);
+            }
+
+
     }
 
 }
